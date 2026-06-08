@@ -37,7 +37,9 @@
     "db:push": "turbo -F @casa-rural-fontecha/db db:push",
     "db:studio": "turbo -F @casa-rural-fontecha/db db:studio",
     "db:generate": "turbo -F @casa-rural-fontecha/db db:generate",
-    "db:migrate": "turbo -F @casa-rural-fontecha/db db:migrate"
+    "db:migrate": "turbo -F @casa-rural-fontecha/db db:migrate",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@casa-rural-fontecha/env": "workspace:*",
@@ -47,6 +49,7 @@
   "devDependencies": {
     "@casa-rural-fontecha/config": "workspace:*",
     "@types/bun": "catalog:",
+    "prettier": "3.8.3",
     "turbo": "^2.9.16",
     "typescript": "catalog:"
   },

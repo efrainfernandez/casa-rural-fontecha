@@ -1,15 +1,15 @@
-import { createDb } from "@casa-rural-fontecha/db";
-import * as schema from "@casa-rural-fontecha/db/schema/auth";
-import { env } from "@casa-rural-fontecha/env/server";
-import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { createDb } from '@casa-rural-fontecha/db'
+import * as schema from '@casa-rural-fontecha/db/schema/auth'
+import { env } from '@casa-rural-fontecha/env/server'
+import { betterAuth } from 'better-auth'
+import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 
 export function createAuth() {
-  const db = createDb();
+  const db = createDb()
 
   return betterAuth({
     database: drizzleAdapter(db, {
-      provider: "pg",
+      provider: 'pg',
 
       schema: schema,
     }),
@@ -21,13 +21,13 @@ export function createAuth() {
     baseURL: env.BETTER_AUTH_URL,
     advanced: {
       defaultCookieAttributes: {
-        sameSite: "none",
+        sameSite: 'none',
         secure: true,
         httpOnly: true,
       },
     },
     plugins: [],
-  });
+  })
 }
 
-export const auth = createAuth();
+export const auth = createAuth()

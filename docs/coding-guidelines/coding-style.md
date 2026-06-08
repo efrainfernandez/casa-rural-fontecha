@@ -310,11 +310,13 @@ if (event.status !== 'CONFIRMED') { ... }
 # Arrancar todo en desarrollo
 bun run dev
 
-# Solo frontend
+# Solo frontend / solo servidor
 bun run dev:web
-
-# Solo servidor
 bun run dev:server
+
+# Formato de código (Prettier)
+bun run format          # aplicar formato a todos los archivos
+bun run format:check    # verificar sin modificar (útil en CI)
 
 # Verificar tipos (en toda la monorepo)
 bun run check-types
@@ -324,6 +326,27 @@ bun run db:generate   # generar migración
 bun run db:migrate    # aplicar migración
 bun run db:push       # push directo (solo desarrollo)
 bun run db:studio     # abrir Drizzle Studio
+```
+
+### Configuración de Prettier
+
+El proyecto incluye `.prettierrc` en la raíz con estas opciones:
+
+| Opción | Valor | Motivo |
+|---|---|---|
+| `semi` | `false` | Sin punto y coma |
+| `singleQuote` | `true` | Comillas simples |
+| `printWidth` | `120` | Ancho de línea máximo |
+| `tabWidth` | `2` | 2 espacios |
+| `trailingComma` | `"all"` | Coma final en multilínea |
+
+Configurar el editor para que ejecute Prettier al guardar (`formatOnSave`). En VS Code / Cursor añadir en `settings.json`:
+
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
 ```
 
 ---

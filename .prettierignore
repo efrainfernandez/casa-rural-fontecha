@@ -1,0 +1,26 @@
+# Dependencias
+node_modules
+.bun
+
+# Builds
+.next
+dist
+build
+out
+.turbo
+
+# Base de datos
+*.sql
+migrations/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Generados automáticamente
+bun.lock
+package-lock.json
+
+# Documentación externa
+*.md

@@ -1,10 +1,10 @@
-import type { AppRouterClient } from "@casa-rural-fontecha/api/routers/index";
-import { env } from "@casa-rural-fontecha/env/web";
-import { createORPCClient } from "@orpc/client";
-import { RPCLink } from "@orpc/client/fetch";
-import { createTanstackQueryUtils } from "@orpc/tanstack-query";
-import { QueryCache, QueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
+import type { AppRouterClient } from '@casa-rural-fontecha/api/routers/index'
+import { env } from '@casa-rural-fontecha/env/web'
+import { createORPCClient } from '@orpc/client'
+import { RPCLink } from '@orpc/client/fetch'
+import { createTanstackQueryUtils } from '@orpc/tanstack-query'
+import { QueryCache, QueryClient } from '@tanstack/react-query'
+import { toast } from 'sonner'
 
 export function createQueryClient() {
   return new QueryClient({
@@ -12,37 +12,37 @@ export function createQueryClient() {
       onError: (error, query) => {
         toast.error(`Error: ${error.message}`, {
           action: {
-            label: "retry",
+            label: 'retry',
             onClick: () => {
-              query.invalidate();
+              query.invalidate()
             },
           },
-        });
+        })
       },
     }),
-  });
+  })
 }
 
-export const queryClient = createQueryClient();
+export const queryClient = createQueryClient()
 
 export const link = new RPCLink({
   url: `${env.NEXT_PUBLIC_SERVER_URL}/rpc`,
   fetch(url, options) {
     return fetch(url, {
       ...options,
-      credentials: "include",
-    });
+      credentials: 'include',
+    })
   },
   headers: async () => {
-    if (typeof window !== "undefined") {
-      return {};
+    if (typeof window !== 'undefined') {
+      return {}
     }
 
-    const { headers } = await import("next/headers");
-    return Object.fromEntries(await headers());
+    const { headers } = await import('next/headers')
+    return Object.fromEntries(await headers())
   },
-});
+})
 
-export const client: AppRouterClient = createORPCClient(link);
+export const client: AppRouterClient = createORPCClient(link)
 
-export const orpc = createTanstackQueryUtils(client);
+export const orpc = createTanstackQueryUtils(client)
