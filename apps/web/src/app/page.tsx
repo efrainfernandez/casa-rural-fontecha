@@ -4,19 +4,8 @@ import { ArrowRight, BedDouble, Camera, Flame, MapPin, Trees, Users } from 'luci
 import { Button } from '@casa-rural-fontecha/ui/components/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@casa-rural-fontecha/ui/components/card'
 
-import { ACCOMMODATIONS, CONTACT_DETAILS, ENVIRONMENT_HIGHLIGHTS, REVIEW_SNIPPETS, TRUST_POINTS } from '@/content/home-content'
-
-function SectionTitle({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
-  return (
-    <div className="max-w-2xl space-y-3">
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-700 dark:text-emerald-300">
-        {eyebrow}
-      </p>
-      <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{title}</h2>
-      <p className="text-base leading-7 text-muted-foreground sm:text-lg">{description}</p>
-    </div>
-  )
-}
+import SectionTitle from '@/components/public/section-title'
+import { ACCOMMODATIONS, CONTACT_DETAILS, ENVIRONMENT_HIGHLIGHTS, REVIEW_SNIPPETS, TRUST_POINTS } from '@/content/public-content'
 
 export default function Home() {
   const totalCapacity = ACCOMMODATIONS.reduce((sum, accommodation) => {
@@ -55,14 +44,14 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link href="#casas">
+              <Link href="/casas">
                 <Button size="lg" className="w-full bg-emerald-800 text-white hover:bg-emerald-700 sm:w-auto">
                   Ver las casas
                 </Button>
               </Link>
-              <Link href="#contacto">
+              <Link href="/entorno">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Contactar
+                  Descubrir el entorno
                 </Button>
               </Link>
             </div>
@@ -157,6 +146,10 @@ export default function Home() {
                       )
                     })}
                   </div>
+
+                  <Link href={`/casas/${accommodation.slug}`}>
+                    <Button variant="outline">Ver ficha completa</Button>
+                  </Link>
                 </CardContent>
               </Card>
             )
@@ -168,7 +161,7 @@ export default function Home() {
         <SectionTitle
           eyebrow="Experiencia visual"
           title="Un bloque destacado para enseñar las casas de forma inmersiva."
-          description="Todavía no desarrollo reservas, pero sí dejo preparada una sección visible para reforzar el valor de los recorridos visuales y la presentación del alojamiento."
+          description="Todavía no desarrollo reservas, pero sí dejo preparada una sección visible para reforzar el valor de los recorridos visuales y la presentación del alojamiento. Las páginas individuales de cada casa amplían este punto con una galería preparada para fotos reales."
         />
 
         <Card className="border-0 bg-stone-900 py-0 text-stone-50 ring-stone-900/30">
@@ -223,6 +216,10 @@ export default function Home() {
             )
           })}
         </div>
+
+        <Link href="/entorno">
+          <Button variant="outline">Ver página completa del entorno</Button>
+        </Link>
       </section>
 
       <section id="confianza" className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-12 sm:px-6 lg:px-8">
@@ -264,6 +261,10 @@ export default function Home() {
             })}
           </div>
         </div>
+
+        <Link href="/confianza">
+          <Button variant="outline">Ver página completa de confianza</Button>
+        </Link>
       </section>
 
       <section id="contacto" className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-12 sm:px-6 lg:px-8 lg:pb-20">
@@ -293,6 +294,10 @@ export default function Home() {
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Ubicación</p>
                 <p className="mt-2 text-lg font-medium">{CONTACT_DETAILS.location}</p>
               </div>
+
+              <Link href="/contacto">
+                <Button variant="outline">Ver página completa de contacto</Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
