@@ -1,1 +1,5 @@
 @import '@casa-rural-fontecha/ui/globals.css';
+
+html {
+  scroll-behavior: smooth;
+}
