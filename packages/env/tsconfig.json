@@ -1,0 +1,3 @@
+{
+  "extends": "@casa-rural-fontecha/config/tsconfig.base.json"
+}

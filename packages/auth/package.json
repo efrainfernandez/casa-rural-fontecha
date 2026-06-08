@@ -1,0 +1,24 @@
+{
+  "name": "@casa-rural-fontecha/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@casa-rural-fontecha/db": "workspace:*",
+    "@casa-rural-fontecha/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@casa-rural-fontecha/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

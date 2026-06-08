@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-lyra",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@casa-rural-fontecha/ui/components",
+    "utils": "@casa-rural-fontecha/ui/lib/utils",
+    "hooks": "@casa-rural-fontecha/ui/hooks",
+    "lib": "@casa-rural-fontecha/ui/lib",
+    "ui": "@casa-rural-fontecha/ui/components"
+  },
+  "menuColor": "default",
+  "menuAccent": "subtle",
+  "registries": {}
+}
