@@ -24,7 +24,7 @@ export default function Home() {
   }, 0)
 
   return (
-    <main className="bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.14),transparent_28%),linear-gradient(180deg,rgba(248,246,239,0.96)_0%,rgba(255,255,255,1)_34%,rgba(241,248,244,0.92)_100%)] dark:bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.12),transparent_24%),linear-gradient(180deg,rgba(14,18,16,1)_0%,rgba(12,14,13,1)_100%)]">
+    <main className="bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_24%),linear-gradient(180deg,rgba(248,246,239,0.58)_0%,rgba(255,255,255,0.4)_34%,rgba(241,248,244,0.5)_100%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_24%),linear-gradient(180deg,rgba(14,18,16,0.42)_0%,rgba(12,14,13,0.56)_100%)]">
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.95fr)] lg:items-center">
           <StaggerGroup className="space-y-7">

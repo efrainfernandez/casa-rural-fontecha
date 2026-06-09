@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import '../index.css'
+import AnimatedBackground from '@/components/animated-background'
 import Header from '@/components/header'
 import Providers from '@/components/providers'
 
@@ -28,9 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden antialiased`}>
         <Providers>
-          <div className="grid min-h-svh grid-rows-[auto_1fr]">
+          <AnimatedBackground />
+          <div className="relative z-10 grid min-h-svh grid-rows-[auto_1fr]">
             <Header />
             {children}
           </div>
