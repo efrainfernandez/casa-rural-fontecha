@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import '../index.css'
+import AnimatedBackground from '@/components/animated-background'
 import Header from '@/components/header'
 import Providers from '@/components/providers'
 
@@ -16,8 +17,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'casa-rural-fontecha',
-  description: 'casa-rural-fontecha',
+  title: 'Casa Rural Fontecha | Alojamientos en Pino del Río, Palencia',
+  description:
+    'Descubre Casa Lía y Casa Julio junto al río Carrión. Una landing clara para presentar Casa Rural Fontecha y su entorno en Pino del Río.',
 }
 
 export default function RootLayout({
@@ -26,10 +28,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="es" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden antialiased`}>
         <Providers>
-          <div className="grid grid-rows-[auto_1fr] h-svh">
+          <AnimatedBackground />
+          <div className="relative z-10 grid min-h-svh grid-rows-[auto_1fr]">
             <Header />
             {children}
           </div>
