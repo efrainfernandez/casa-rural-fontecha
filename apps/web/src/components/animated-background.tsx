@@ -113,15 +113,15 @@ export default function AnimatedBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#08110d]">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-70 scale-110"
+        className="absolute inset-0 scale-[1.08] bg-cover bg-center opacity-92"
         style={{ backgroundImage: `url(${POSTER_PATH})` }}
       />
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 h-full w-full scale-110 opacity-80 blur-[14px] saturate-[1.15]"
+        className="absolute inset-0 h-full w-full scale-[1.08] opacity-100 blur-[3px] saturate-[1.08] contrast-[1.04]"
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_32%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,8,0.28),rgba(6,10,8,0.46))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,248,220,0.1),transparent_24%),radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.1),transparent_26%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,9,7,0.06),rgba(5,9,7,0.18))]" />
     </div>
   )
 }

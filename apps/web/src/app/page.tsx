@@ -24,19 +24,19 @@ export default function Home() {
   }, 0)
 
   return (
-    <main className="bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_24%),linear-gradient(180deg,rgba(248,246,239,0.58)_0%,rgba(255,255,255,0.4)_34%,rgba(241,248,244,0.5)_100%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_24%),linear-gradient(180deg,rgba(14,18,16,0.42)_0%,rgba(12,14,13,0.56)_100%)]">
+    <main className="bg-[linear-gradient(180deg,rgba(7,11,10,0.03)_0%,rgba(7,11,10,0.1)_38%,rgba(7,11,10,0.16)_100%)] text-white">
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.95fr)] lg:items-center">
           <StaggerGroup className="space-y-7">
             <StaggerItem>
-              <div className="flex flex-wrap gap-3 text-xs font-medium text-emerald-800 dark:text-emerald-200">
-                <span className="rounded-full border border-emerald-800/14 bg-white/80 px-3 py-1.5 dark:border-emerald-200/20 dark:bg-white/5">
+              <div className="flex flex-wrap gap-3 text-xs font-medium text-white/82">
+                <span className="rounded-full border border-white/12 bg-black/10 px-3 py-1.5 backdrop-blur-sm">
                   Pino del Río
                 </span>
-                <span className="rounded-full border border-emerald-800/14 bg-white/80 px-3 py-1.5 dark:border-emerald-200/20 dark:bg-white/5">
+                <span className="rounded-full border border-white/12 bg-black/10 px-3 py-1.5 backdrop-blur-sm">
                   Río Carrión
                 </span>
-                <span className="rounded-full border border-emerald-800/14 bg-white/80 px-3 py-1.5 dark:border-emerald-200/20 dark:bg-white/5">
+                <span className="rounded-full border border-white/12 bg-black/10 px-3 py-1.5 backdrop-blur-sm">
                   Escapada rural
                 </span>
               </div>
@@ -44,10 +44,10 @@ export default function Home() {
 
             <StaggerItem>
               <div className="space-y-4">
-                <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-7xl">
+                <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-balance text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.42)] sm:text-5xl lg:text-7xl">
                   Menos ruido. Más calma.
                 </h1>
-                <p className="max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+                <p className="max-w-xl text-base leading-7 text-white/76 sm:text-lg">
                   Dos casas rurales con mucho aire, luz y río cerca.
                 </p>
               </div>
@@ -55,17 +55,17 @@ export default function Home() {
 
             <StaggerItem>
               <div className="grid max-w-2xl gap-3 sm:grid-cols-3">
-                <div className="rounded-3xl border border-black/6 bg-white/75 p-4 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
+                <div className="rounded-3xl border border-white/12 bg-black/10 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
                   <p className="text-2xl font-semibold">2</p>
-                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Casas</p>
+                  <p className="text-xs uppercase tracking-[0.24em] text-white/60">Casas</p>
                 </div>
-                <div className="rounded-3xl border border-black/6 bg-white/75 p-4 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
+                <div className="rounded-3xl border border-white/12 bg-black/10 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
                   <p className="text-2xl font-semibold">{totalCapacity}</p>
-                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Plazas</p>
+                  <p className="text-xs uppercase tracking-[0.24em] text-white/60">Plazas</p>
                 </div>
-                <div className="rounded-3xl border border-black/6 bg-white/75 p-4 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
+                <div className="rounded-3xl border border-white/12 bg-black/10 p-4 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur-sm">
                   <p className="text-2xl font-semibold">{totalBedrooms}</p>
-                  <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Dormitorios</p>
+                  <p className="text-xs uppercase tracking-[0.24em] text-white/60">Dormitorios</p>
                 </div>
               </div>
             </StaggerItem>
@@ -75,13 +75,17 @@ export default function Home() {
                 <Link href="/casas">
                   <Button
                     size="lg"
-                    className="w-full rounded-full bg-emerald-800 px-6 text-white hover:bg-emerald-700 sm:w-auto"
+                    className="w-full rounded-full bg-white px-6 text-black hover:bg-white/90 sm:w-auto"
                   >
                     Ver las casas
                   </Button>
                 </Link>
                 <Link href="/entorno">
-                  <Button size="lg" variant="outline" className="w-full rounded-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full rounded-full border-white/16 bg-black/10 text-white hover:bg-white/10 sm:w-auto"
+                  >
                     Ver entorno
                   </Button>
                 </Link>
@@ -91,34 +95,34 @@ export default function Home() {
 
           <FadeIn>
             <HoverLift>
-              <Card className="overflow-hidden rounded-[2rem] border-0 bg-stone-950 text-stone-50 shadow-[0_30px_80px_rgba(15,23,42,0.24)] ring-stone-900/30">
-                <CardHeader className="space-y-5 border-b border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.28),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] pb-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-stone-300">Vista rápida</p>
-                  <CardTitle className="max-w-sm text-3xl font-semibold text-balance text-stone-50">
+              <Card className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/16 text-white shadow-[0_30px_80px_rgba(15,23,42,0.14)] backdrop-blur-lg">
+                <CardHeader className="space-y-5 border-b border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.22),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] pb-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/60">Vista rápida</p>
+                  <CardTitle className="max-w-sm text-3xl font-semibold text-balance text-white">
                     Campo, agua y casas con personalidad.
                   </CardTitle>
-                  <CardDescription className="max-w-sm text-sm leading-7 text-stone-300">
+                  <CardDescription className="max-w-sm text-sm leading-7 text-white/68">
                     Una home más limpia, visual y directa.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4 p-5 sm:grid-cols-2">
-                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <div className="rounded-3xl border border-white/10 bg-white/4 p-5 backdrop-blur-sm">
                     <Waves className="mb-4 size-5 text-emerald-300" />
                     <p className="text-lg font-medium">Río y paseos</p>
-                    <p className="mt-2 text-sm text-stone-300">Entorno sereno a pocos minutos.</p>
+                    <p className="mt-2 text-sm text-white/68">Entorno sereno a pocos minutos.</p>
                   </div>
-                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <div className="rounded-3xl border border-white/10 bg-white/4 p-5 backdrop-blur-sm">
                     <Sparkles className="mb-4 size-5 text-amber-300" />
                     <p className="text-lg font-medium">Interiores cálidos</p>
-                    <p className="mt-2 text-sm text-stone-300">Espacios pensados para descansar.</p>
+                    <p className="mt-2 text-sm text-white/68">Espacios pensados para descansar.</p>
                   </div>
-                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5 sm:col-span-2">
+                  <div className="rounded-3xl border border-white/10 bg-white/4 p-5 backdrop-blur-sm sm:col-span-2">
                     <div className="flex items-center justify-between gap-4">
                       <div>
                         <p className="text-3xl font-semibold">{totalCapacity} plazas</p>
-                        <p className="mt-1 text-sm text-stone-300">Repartidas entre Casa Lía y Casa Julio.</p>
+                        <p className="mt-1 text-sm text-white/68">Repartidas entre Casa Lía y Casa Julio.</p>
                       </div>
-                      <ArrowRight className="size-5 shrink-0 text-stone-400" />
+                      <ArrowRight className="size-5 shrink-0 text-white/48" />
                     </div>
                   </div>
                 </CardContent>
@@ -138,48 +142,48 @@ export default function Home() {
             return (
               <StaggerItem key={accommodation.slug}>
                 <HoverLift>
-                  <Card className="overflow-hidden rounded-[2rem] border-0 bg-white/88 py-0 shadow-[0_24px_60px_rgba(15,23,42,0.08)] ring-1 ring-black/6 dark:bg-card">
-                    <div className="border-b border-black/6 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.24),transparent_40%),linear-gradient(135deg,rgba(14,116,89,0.08),rgba(120,53,15,0.12))] px-5 py-6 dark:border-white/10 dark:bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.18),transparent_40%),linear-gradient(135deg,rgba(16,185,129,0.14),rgba(180,83,9,0.12))]">
-                      <p className="text-xs font-semibold uppercase tracking-[0.26em] text-emerald-800 dark:text-emerald-300">
+                  <Card className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/14 py-0 text-white shadow-[0_24px_60px_rgba(15,23,42,0.1)] backdrop-blur-lg">
+                    <div className="border-b border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.18),transparent_40%),linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] px-5 py-6">
+                      <p className="text-xs font-semibold uppercase tracking-[0.26em] text-white/62">
                         {accommodation.slug}
                       </p>
                       <h3 className="mt-3 text-3xl font-semibold">{accommodation.name}</h3>
                     </div>
 
                     <CardContent className="grid gap-6 px-5 py-6">
-                      <p className="max-w-md text-base leading-7 text-muted-foreground">{accommodation.summary}</p>
+                      <p className="max-w-md text-base leading-7 text-white/74">{accommodation.summary}</p>
 
                       <div className="grid gap-3 sm:grid-cols-2">
-                        <div className="flex items-center gap-3 rounded-2xl border border-black/6 p-3.5 dark:border-white/10">
-                          <Users className="size-4 text-emerald-700 dark:text-emerald-300" />
+                        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/4 p-3.5">
+                          <Users className="size-4 text-emerald-300" />
                           <span>{accommodation.capacity} plazas</span>
                         </div>
-                        <div className="flex items-center gap-3 rounded-2xl border border-black/6 p-3.5 dark:border-white/10">
-                          <BedDouble className="size-4 text-emerald-700 dark:text-emerald-300" />
+                        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/4 p-3.5">
+                          <BedDouble className="size-4 text-emerald-300" />
                           <span>{accommodation.bedrooms} dormitorios</span>
                         </div>
-                        <div className="flex items-center gap-3 rounded-2xl border border-black/6 p-3.5 dark:border-white/10">
+                        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/4 p-3.5">
                           {hasFireplace ? (
-                            <Flame className="size-4 text-emerald-700 dark:text-emerald-300" />
+                            <Flame className="size-4 text-emerald-300" />
                           ) : (
-                            <Trees className="size-4 text-emerald-700 dark:text-emerald-300" />
+                            <Trees className="size-4 text-emerald-300" />
                           )}
                           <span>{accommodation.features[0]}</span>
                         </div>
-                        <div className="flex items-center gap-3 rounded-2xl border border-black/6 p-3.5 dark:border-white/10">
-                          <MapPin className="size-4 text-emerald-700 dark:text-emerald-300" />
+                        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/4 p-3.5">
+                          <MapPin className="size-4 text-emerald-300" />
                           <span>{CONTACT_DETAILS.location}</span>
                         </div>
                       </div>
 
-                      <p className="text-sm leading-7 text-muted-foreground">{accommodation.audience}</p>
+                      <p className="text-sm leading-7 text-white/68">{accommodation.audience}</p>
 
                       <div className="flex flex-wrap gap-2">
                         {accommodation.features.map((feature) => {
                           return (
                             <span
                               key={feature}
-                              className="rounded-full border border-emerald-800/15 bg-emerald-700/8 px-3 py-1.5 text-xs font-medium text-emerald-900 dark:border-emerald-200/15 dark:bg-emerald-300/10 dark:text-emerald-100"
+                              className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/84"
                             >
                               {feature}
                             </span>
@@ -188,7 +192,10 @@ export default function Home() {
                       </div>
 
                       <Link href={`/casas/${accommodation.slug}`}>
-                        <Button variant="outline" className="rounded-full">
+                        <Button
+                          variant="outline"
+                          className="rounded-full border-white/16 bg-black/10 text-white hover:bg-white/10"
+                        >
                           Ver ficha
                         </Button>
                       </Link>
@@ -210,30 +217,30 @@ export default function Home() {
 
         <FadeIn>
           <HoverLift>
-            <Card className="overflow-hidden rounded-[2rem] border-0 bg-stone-900 py-0 text-stone-50 ring-stone-900/30">
+            <Card className="overflow-hidden rounded-[2rem] border border-white/10 bg-black/14 py-0 text-white backdrop-blur-lg">
               <CardContent className="grid gap-8 px-5 py-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-6 lg:py-8">
                 <div className="space-y-4">
-                  <div className="flex size-12 items-center justify-center rounded-2xl border border-white/15 bg-white/5">
+                  <div className="flex size-12 items-center justify-center rounded-2xl border border-white/15 bg-white/6">
                     <Camera className="size-5 text-emerald-300" />
                   </div>
                   <h3 className="text-3xl font-semibold text-balance">Recorridos más fluidos.</h3>
-                  <p className="max-w-sm text-sm leading-7 text-stone-300">
+                  <p className="max-w-sm text-sm leading-7 text-white/68">
                     Tarjetas grandes, aire visual y animaciones más suaves.
                   </p>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-3">
-                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-stone-300">Casa Lía</p>
-                    <p className="mt-3 text-sm leading-7 text-stone-100">Chimenea, balcón y calma.</p>
+                  <div className="rounded-3xl border border-white/10 bg-white/4 p-5 backdrop-blur-sm">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/58">Casa Lía</p>
+                    <p className="mt-3 text-sm leading-7 text-white">Chimenea, balcón y calma.</p>
                   </div>
-                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-stone-300">Casa Julio</p>
-                    <p className="mt-3 text-sm leading-7 text-stone-100">Terraza, jardín y reunión.</p>
+                  <div className="rounded-3xl border border-white/10 bg-white/4 p-5 backdrop-blur-sm">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/58">Casa Julio</p>
+                    <p className="mt-3 text-sm leading-7 text-white">Terraza, jardín y reunión.</p>
                   </div>
-                  <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-stone-300">Entorno</p>
-                    <p className="mt-3 text-sm leading-7 text-stone-100">Ribera, senderos y aire libre.</p>
+                  <div className="rounded-3xl border border-white/10 bg-white/4 p-5 backdrop-blur-sm">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/58">Entorno</p>
+                    <p className="mt-3 text-sm leading-7 text-white">Ribera, senderos y aire libre.</p>
                   </div>
                 </div>
               </CardContent>
@@ -254,12 +261,12 @@ export default function Home() {
             return (
               <StaggerItem key={highlight.title}>
                 <HoverLift>
-                  <Card className="rounded-[1.75rem] border-0 bg-white/90 py-0 shadow-sm ring-1 ring-black/6 dark:bg-card">
+                  <Card className="rounded-[1.75rem] border border-white/12 bg-black/20 py-0 text-white backdrop-blur-xl">
                     <CardHeader>
                       <CardTitle className="text-lg font-semibold">{highlight.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="pb-5">
-                      <p className="text-sm leading-7 text-muted-foreground">{highlight.description}</p>
+                      <p className="text-sm leading-7 text-white/68">{highlight.description}</p>
                     </CardContent>
                   </Card>
                 </HoverLift>
@@ -269,7 +276,7 @@ export default function Home() {
         </StaggerGroup>
 
         <Link href="/entorno">
-          <Button variant="outline" className="rounded-full">
+          <Button variant="outline" className="rounded-full border-white/18 bg-black/14 text-white hover:bg-white/10">
             Ver entorno
           </Button>
         </Link>
@@ -285,7 +292,7 @@ export default function Home() {
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
           <FadeIn>
             <HoverLift>
-              <Card className="overflow-hidden rounded-[2rem] border-0 bg-emerald-950 py-0 text-emerald-50 ring-emerald-950/30">
+              <Card className="overflow-hidden rounded-[2rem] border border-white/12 bg-black/24 py-0 text-emerald-50 backdrop-blur-xl">
                 <CardHeader>
                   <CardTitle className="text-3xl font-semibold text-balance">
                     Una primera impresión mucho más limpia.
@@ -294,7 +301,7 @@ export default function Home() {
                 <CardContent className="space-y-4 pb-6">
                   {TRUST_POINTS.map((point) => {
                     return (
-                      <div key={point} className="flex gap-3 rounded-3xl border border-white/10 bg-white/5 p-4">
+                      <div key={point} className="flex gap-3 rounded-3xl border border-white/10 bg-white/6 p-4">
                         <ArrowRight className="mt-1 size-4 shrink-0 text-emerald-300" />
                         <p className="text-sm leading-7 text-emerald-50">{point}</p>
                       </div>
@@ -310,10 +317,10 @@ export default function Home() {
               return (
                 <StaggerItem key={review.quote}>
                   <HoverLift>
-                    <Card className="rounded-[1.75rem] border-0 bg-white/90 py-0 shadow-sm ring-1 ring-black/6 dark:bg-card">
+                    <Card className="rounded-[1.75rem] border border-white/12 bg-black/20 py-0 text-white backdrop-blur-xl">
                       <CardContent className="space-y-4 px-4 py-5">
-                        <p className="text-lg leading-8 text-foreground">“{review.quote}”</p>
-                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+                        <p className="text-lg leading-8 text-white">“{review.quote}”</p>
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/52">
                           {review.author}
                         </p>
                       </CardContent>
@@ -326,7 +333,7 @@ export default function Home() {
         </div>
 
         <Link href="/confianza">
-          <Button variant="outline" className="rounded-full">
+          <Button variant="outline" className="rounded-full border-white/18 bg-black/14 text-white hover:bg-white/10">
             Ver confianza
           </Button>
         </Link>
@@ -338,23 +345,23 @@ export default function Home() {
       >
         <FadeIn>
           <HoverLift>
-            <Card className="overflow-hidden rounded-[2rem] border-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.18),transparent_34%),linear-gradient(135deg,rgba(120,53,15,0.12),rgba(5,150,105,0.12))] py-0 ring-1 ring-black/8 dark:ring-white/10">
+            <Card className="overflow-hidden rounded-[2rem] border border-white/12 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.16),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.2),rgba(255,255,255,0.04))] py-0 text-white backdrop-blur-xl">
               <CardContent className="grid gap-8 px-5 py-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-6">
                 <div className="space-y-4">
-                  <p className="inline-flex w-fit rounded-full border border-emerald-800/12 bg-white/55 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-800 dark:border-emerald-300/15 dark:bg-white/8 dark:text-emerald-300">
+                  <p className="inline-flex w-fit rounded-full border border-white/14 bg-black/16 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/88 backdrop-blur-md">
                     Contacto
                   </p>
                   <h2 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                     Reserva el silencio. El resto ya lo pone el lugar.
                   </h2>
-                  <p className="max-w-md text-sm leading-7 text-muted-foreground sm:text-base">
+                  <p className="max-w-md text-sm leading-7 text-white/72 sm:text-base">
                     Contacto simple y visible, sin bloques pesados.
                   </p>
                 </div>
 
                 <div className="grid gap-4 self-start">
-                  <div className="rounded-3xl border border-black/8 bg-background/80 p-4 dark:border-white/10 dark:bg-background/40">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Email</p>
+                  <div className="rounded-3xl border border-white/12 bg-white/6 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/58">Email</p>
                     <a
                       href={`mailto:${CONTACT_DETAILS.email}`}
                       className="mt-2 block text-lg font-medium hover:underline"
@@ -362,13 +369,16 @@ export default function Home() {
                       {CONTACT_DETAILS.email}
                     </a>
                   </div>
-                  <div className="rounded-3xl border border-black/8 bg-background/80 p-4 dark:border-white/10 dark:bg-background/40">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Ubicación</p>
+                  <div className="rounded-3xl border border-white/12 bg-white/6 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/58">Ubicación</p>
                     <p className="mt-2 text-lg font-medium">{CONTACT_DETAILS.location}</p>
                   </div>
 
                   <Link href="/contacto">
-                    <Button variant="outline" className="rounded-full">
+                    <Button
+                      variant="outline"
+                      className="rounded-full border-white/18 bg-black/14 text-white hover:bg-white/10"
+                    >
                       Ver contacto
                     </Button>
                   </Link>
@@ -379,7 +389,7 @@ export default function Home() {
         </FadeIn>
       </section>
 
-      <footer className="border-t border-black/8 bg-white/70 px-4 py-6 text-sm text-muted-foreground dark:border-white/10 dark:bg-black/20 sm:px-6 lg:px-8">
+      <footer className="border-t border-white/10 bg-black/18 px-4 py-6 text-sm text-white/62 backdrop-blur-md sm:px-6 lg:px-8">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>Casa Rural Fontecha | Pino del Río</p>
           <p>{CONTACT_DETAILS.email}</p>

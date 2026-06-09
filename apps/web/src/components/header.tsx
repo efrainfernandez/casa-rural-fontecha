@@ -66,7 +66,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 px-3 pt-3 sm:px-4 lg:px-6">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 rounded-3xl border border-black/6 bg-background/78 px-4 py-4 shadow-[0_10px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-background/70 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 rounded-3xl border border-white/14 bg-black/12 px-4 py-4 text-white shadow-[0_10px_40px_rgba(15,23,42,0.12)] backdrop-blur-lg sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <motion.div
           className="space-y-1"
           initial={{ opacity: 0, y: -12 }}
@@ -76,11 +76,11 @@ export default function Header() {
           <Link href="/" className="block text-lg font-semibold tracking-tight">
             Casa Rural Fontecha
           </Link>
-          <p className="text-xs text-muted-foreground">Pino del Río, Palencia</p>
+          <p className="text-xs text-white/68">Pino del Río, Palencia</p>
         </motion.div>
 
         <motion.nav
-          className="flex flex-wrap items-center gap-2 text-sm font-medium text-muted-foreground"
+          className="flex flex-wrap items-center gap-2 text-sm font-medium text-white/78"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
@@ -91,8 +91,8 @@ export default function Header() {
                 key={to}
                 href={to}
                 className={cn(
-                  'rounded-full px-3 py-2 transition-all hover:bg-emerald-700/8 hover:text-foreground',
-                  pathname === to && 'bg-emerald-700/10 text-foreground',
+                  'rounded-full px-3 py-2 transition-all hover:bg-white/10 hover:text-white',
+                  pathname === to && 'bg-white/14 text-white',
                 )}
               >
                 {label}
@@ -109,8 +109,8 @@ export default function Header() {
             <button
               type="button"
               className={cn(
-                'flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-all hover:bg-emerald-700/8 hover:text-foreground',
-                isHouseRoute && 'bg-emerald-700/10 text-foreground',
+                'flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-all hover:bg-white/10 hover:text-white',
+                isHouseRoute && 'bg-white/14 text-white',
               )}
               aria-expanded={isHousesOpen}
               aria-haspopup="menu"
@@ -131,7 +131,7 @@ export default function Header() {
                   transition={{ duration: 0.16, ease: 'easeOut' }}
                   className="absolute left-0 top-full z-50 min-w-56 pt-3"
                 >
-                  <div className="grid gap-1 rounded-2xl border border-black/8 bg-background/92 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10">
+                  <div className="grid gap-1 rounded-2xl border border-white/14 bg-black/18 p-2 shadow-2xl backdrop-blur-lg">
                     {houseLinks.map((houseLink, index) => {
                       return (
                         <motion.div
@@ -143,8 +143,8 @@ export default function Header() {
                           <Link
                             href={houseLink.to}
                             className={cn(
-                              'block rounded-xl px-3 py-2 text-sm text-foreground/85 transition-colors hover:bg-emerald-700/8 hover:text-foreground',
-                              pathname === houseLink.to && 'bg-emerald-700/10 text-foreground',
+                              'block rounded-xl px-3 py-2 text-sm text-white/82 transition-colors hover:bg-white/10 hover:text-white',
+                              pathname === houseLink.to && 'bg-white/14 text-white',
                             )}
                             onClick={() => setIsHousesOpen(false)}
                           >
@@ -165,8 +165,8 @@ export default function Header() {
                 key={to}
                 href={to}
                 className={cn(
-                  'rounded-full px-3 py-2 transition-all hover:bg-emerald-700/8 hover:text-foreground',
-                  pathname === to && 'bg-emerald-700/10 text-foreground',
+                  'rounded-full px-3 py-2 transition-all hover:bg-white/10 hover:text-white',
+                  pathname === to && 'bg-white/14 text-white',
                 )}
               >
                 {label}
@@ -183,7 +183,7 @@ export default function Header() {
         >
           <Link
             href="/login"
-            className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-emerald-700/8 hover:text-foreground"
+            className="rounded-full px-3 py-2 text-sm font-medium text-white/78 transition-all hover:bg-white/10 hover:text-white"
           >
             Acceso
           </Link>
