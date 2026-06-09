@@ -15,10 +15,10 @@ export function FadeIn({ children, className }: WrapperProps) {
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
-      whileInView={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28, filter: 'blur(10px)' }}
+      whileInView={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      transition={reduceMotion ? { duration: 0.28 } : { duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -37,9 +37,7 @@ export function StaggerGroup({ children, className }: WrapperProps) {
       variants={{
         hidden: {},
         visible: {
-          transition: reduceMotion
-            ? { staggerChildren: 0 }
-            : { staggerChildren: 0.1, delayChildren: 0.05 },
+          transition: reduceMotion ? { staggerChildren: 0 } : { staggerChildren: 0.12, delayChildren: 0.08 },
         },
       }}
     >
@@ -55,11 +53,12 @@ export function StaggerItem({ children, className }: WrapperProps) {
     <motion.div
       className={className}
       variants={{
-        hidden: reduceMotion ? { opacity: 0 } : { opacity: 0, y: 18 },
+        hidden: reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20, filter: 'blur(8px)' },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+          filter: 'blur(0px)',
+          transition: reduceMotion ? { duration: 0.24 } : { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
         },
       }}
     >
@@ -74,8 +73,8 @@ export function HoverLift({ children, className }: WrapperProps) {
   return (
     <motion.div
       className={className}
-      whileHover={reduceMotion ? undefined : { y: -6, scale: 1.01 }}
-      transition={{ duration: 0.24, ease: 'easeOut' }}
+      whileHover={reduceMotion ? undefined : { y: -8, scale: 1.015 }}
+      transition={reduceMotion ? { duration: 0.2 } : { type: 'spring', stiffness: 220, damping: 18 }}
     >
       {children}
     </motion.div>

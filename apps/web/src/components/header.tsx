@@ -14,9 +14,7 @@ export default function Header() {
   const [isHousesOpen, setIsHousesOpen] = useState(false)
   const housesMenuRef = useRef<HTMLDivElement | null>(null)
 
-  const primaryLinks = [
-    { to: '/', label: 'Inicio' },
-  ] as const
+  const primaryLinks = [{ to: '/', label: 'Inicio' }] as const
 
   const secondaryLinks = [
     { to: '/entorno', label: 'Entorno' },
@@ -29,6 +27,8 @@ export default function Header() {
     { to: '/casas/casa-lia', label: 'Casa Lía' },
     { to: '/casas/casa-julio', label: 'Casa Julio' },
   ] as const
+
+  const isHouseRoute = pathname.startsWith('/casas')
 
   useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -65,8 +65,8 @@ export default function Header() {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-40 border-b border-black/8 bg-background/85 backdrop-blur dark:border-white/10">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 px-3 pt-3 sm:px-4 lg:px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 rounded-3xl border border-black/6 bg-background/78 px-4 py-4 shadow-[0_10px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-background/70 sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <motion.div
           className="space-y-1"
           initial={{ opacity: 0, y: -12 }}
@@ -76,18 +76,25 @@ export default function Header() {
           <Link href="/" className="block text-lg font-semibold tracking-tight">
             Casa Rural Fontecha
           </Link>
-          <p className="text-sm text-muted-foreground">Casa Lía y Casa Julio en Pino del Río</p>
+          <p className="text-xs text-muted-foreground">Pino del Río, Palencia</p>
         </motion.div>
 
         <motion.nav
-          className="flex flex-wrap items-center gap-4 text-sm font-medium text-muted-foreground"
+          className="flex flex-wrap items-center gap-2 text-sm font-medium text-muted-foreground"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
         >
           {primaryLinks.map(({ to, label }) => {
             return (
-              <Link key={to} href={to} className="transition-colors hover:text-foreground">
+              <Link
+                key={to}
+                href={to}
+                className={cn(
+                  'rounded-full px-3 py-2 transition-all hover:bg-emerald-700/8 hover:text-foreground',
+                  pathname === to && 'bg-emerald-700/10 text-foreground',
+                )}
+              >
                 {label}
               </Link>
             )
@@ -101,7 +108,10 @@ export default function Header() {
           >
             <button
               type="button"
-              className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className={cn(
+                'flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-all hover:bg-emerald-700/8 hover:text-foreground',
+                isHouseRoute && 'bg-emerald-700/10 text-foreground',
+              )}
               aria-expanded={isHousesOpen}
               aria-haspopup="menu"
               onClick={() => setIsHousesOpen((currentValue) => !currentValue)}
@@ -121,7 +131,7 @@ export default function Header() {
                   transition={{ duration: 0.16, ease: 'easeOut' }}
                   className="absolute left-0 top-full z-50 min-w-56 pt-3"
                 >
-                  <div className="grid gap-1 border border-black/8 bg-background/95 p-2 shadow-lg backdrop-blur dark:border-white/10">
+                  <div className="grid gap-1 rounded-2xl border border-black/8 bg-background/92 p-2 shadow-2xl backdrop-blur-xl dark:border-white/10">
                     {houseLinks.map((houseLink, index) => {
                       return (
                         <motion.div
@@ -132,7 +142,10 @@ export default function Header() {
                         >
                           <Link
                             href={houseLink.to}
-                            className="block px-3 py-2 text-sm text-foreground/85 transition-colors hover:bg-emerald-700/8 hover:text-foreground"
+                            className={cn(
+                              'block rounded-xl px-3 py-2 text-sm text-foreground/85 transition-colors hover:bg-emerald-700/8 hover:text-foreground',
+                              pathname === houseLink.to && 'bg-emerald-700/10 text-foreground',
+                            )}
                             onClick={() => setIsHousesOpen(false)}
                           >
                             {houseLink.label}
@@ -148,7 +161,14 @@ export default function Header() {
 
           {secondaryLinks.map(({ to, label }) => {
             return (
-              <Link key={to} href={to} className="transition-colors hover:text-foreground">
+              <Link
+                key={to}
+                href={to}
+                className={cn(
+                  'rounded-full px-3 py-2 transition-all hover:bg-emerald-700/8 hover:text-foreground',
+                  pathname === to && 'bg-emerald-700/10 text-foreground',
+                )}
+              >
                 {label}
               </Link>
             )
@@ -161,7 +181,10 @@ export default function Header() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Link href="/login" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+          <Link
+            href="/login"
+            className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-emerald-700/8 hover:text-foreground"
+          >
             Acceso
           </Link>
           <ModeToggle />

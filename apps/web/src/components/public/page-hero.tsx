@@ -26,14 +26,14 @@ export default function PageHero({
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <StaggerGroup className="flex flex-col gap-6">
         <StaggerItem>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-700 dark:text-emerald-300">
+          <p className="inline-flex w-fit rounded-full border border-emerald-700/12 bg-emerald-700/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-700 dark:border-emerald-300/15 dark:bg-emerald-300/10 dark:text-emerald-300">
             {eyebrow}
           </p>
         </StaggerItem>
         <StaggerItem>
-          <div className="max-w-4xl space-y-5">
+          <div className="max-w-4xl space-y-4">
             <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">{title}</h1>
-            <p className="text-lg leading-8 text-muted-foreground sm:text-xl">{description}</p>
+            <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">{description}</p>
           </div>
         </StaggerItem>
         {actions != null ? (
