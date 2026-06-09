@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
+import { AnimatePresence, motion } from 'motion/react'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
@@ -66,14 +67,24 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-black/8 bg-background/85 backdrop-blur dark:border-white/10">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <div className="space-y-1">
+        <motion.div
+          className="space-y-1"
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
           <Link href="/" className="block text-lg font-semibold tracking-tight">
             Casa Rural Fontecha
           </Link>
           <p className="text-sm text-muted-foreground">Casa Lía y Casa Julio en Pino del Río</p>
-        </div>
+        </motion.div>
 
-        <nav className="flex flex-wrap items-center gap-4 text-sm font-medium text-muted-foreground">
+        <motion.nav
+          className="flex flex-wrap items-center gap-4 text-sm font-medium text-muted-foreground"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+        >
           {primaryLinks.map(({ to, label }) => {
             return (
               <Link key={to} href={to} className="transition-colors hover:text-foreground">
@@ -96,32 +107,43 @@ export default function Header() {
               onClick={() => setIsHousesOpen((currentValue) => !currentValue)}
             >
               Casas
-              <ChevronDown className={cn('size-4 transition-transform', isHousesOpen && 'rotate-180')} />
+              <motion.span animate={{ rotate: isHousesOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                <ChevronDown className="size-4" />
+              </motion.span>
             </button>
 
-            <div
-              className={cn(
-                'absolute left-0 top-full z-50 min-w-56 pt-3 transition duration-150',
-                isHousesOpen
-                  ? 'pointer-events-auto translate-y-0 opacity-100'
-                  : 'pointer-events-none -translate-y-1 opacity-0',
-              )}
-            >
-              <div className="grid gap-1 border border-black/8 bg-background/95 p-2 shadow-lg backdrop-blur dark:border-white/10">
-                {houseLinks.map((houseLink) => {
-                  return (
-                    <Link
-                      key={houseLink.to}
-                      href={houseLink.to}
-                      className="block px-3 py-2 text-sm text-foreground/85 transition-colors hover:bg-emerald-700/8 hover:text-foreground"
-                      onClick={() => setIsHousesOpen(false)}
-                    >
-                      {houseLink.label}
-                    </Link>
-                  )
-                })}
-              </div>
-            </div>
+            <AnimatePresence>
+              {isHousesOpen ? (
+                <motion.div
+                  initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                  transition={{ duration: 0.16, ease: 'easeOut' }}
+                  className="absolute left-0 top-full z-50 min-w-56 pt-3"
+                >
+                  <div className="grid gap-1 border border-black/8 bg-background/95 p-2 shadow-lg backdrop-blur dark:border-white/10">
+                    {houseLinks.map((houseLink, index) => {
+                      return (
+                        <motion.div
+                          key={houseLink.to}
+                          initial={{ opacity: 0, x: -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.2, delay: index * 0.03 }}
+                        >
+                          <Link
+                            href={houseLink.to}
+                            className="block px-3 py-2 text-sm text-foreground/85 transition-colors hover:bg-emerald-700/8 hover:text-foreground"
+                            onClick={() => setIsHousesOpen(false)}
+                          >
+                            {houseLink.label}
+                          </Link>
+                        </motion.div>
+                      )
+                    })}
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
           </div>
 
           {secondaryLinks.map(({ to, label }) => {
@@ -131,14 +153,19 @@ export default function Header() {
               </Link>
             )
           })}
-        </nav>
+        </motion.nav>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto">
+        <motion.div
+          className="flex items-center gap-2 self-start sm:self-auto"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
           <Link href="/login" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             Acceso
           </Link>
           <ModeToggle />
-        </div>
+        </motion.div>
       </div>
     </header>
   )
