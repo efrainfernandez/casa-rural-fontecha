@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Entorno | Pino del Río - Un mapa de sensaciones</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;500;700&amp;family=Source+Sans+Three:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"secondary-fixed": "#ffdbd1", "inverse-on-surface": "#f2f1ec", "outline-variant": "#c5c8bd", "on-error-container": "#93000a", "surface-tint": "#546348", "on-secondary-fixed": "#3b0900", "secondary-fixed-dim": "#ffb5a0", "error-container": "#ffdad6", "surface-dim": "#dbdad5", "inverse-surface": "#30312e", "on-tertiary-container": "#d7b180", "on-primary-fixed": "#121f0a", "on-background": "#1b1c19", "surface-container": "#f0eee9", "surface-container-highest": "#e4e2dd", "surface-container-low": "#f5f3ee", "on-secondary-fixed-variant": "#743421", "tertiary-container": "#5e431c", "surface-bright": "#fbf9f4", error: "#ba1a1a", "on-error": "#ffffff", "on-primary-fixed-variant": "#3d4b32", tertiary: "#452d07", "on-surface": "#1b1c19", primary: "#28351e", "on-tertiary-fixed": "#291800", surface: "#fbf9f4", "on-primary-container": "#acbc9c", "primary-container": "#3e4c33", "primary-fixed-dim": "#bcccab", "on-primary": "#ffffff", "on-surface-variant": "#454840", "tertiary-fixed": "#ffddb4", "surface-container-lowest": "#ffffff", "surface-container-high": "#eae8e3", "surface-variant": "#e4e2dd", "inverse-primary": "#bcccab", "secondary-container": "#fda288", "primary-fixed": "#d7e8c6", background: "#fbf9f4", "on-tertiary-fixed-variant": "#5c421b", outline: "#75786f", "on-tertiary": "#ffffff", "on-secondary": "#ffffff", "on-secondary-container": "#773623", secondary: "#914a36", "tertiary-fixed-dim": "#e7c08e"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {gutter: "24px", unit: "8px", "margin-desktop": "64px", "section-gap": "120px", "margin-mobile": "20px"}, fontFamily: {"headline-lg": ["Libre Caslon Text"], display: ["Libre Caslon Text"], "headline-lg-mobile": ["Libre Caslon Text"], "headline-md": ["Libre Caslon Text"], "label-md": ["Source Serif 4"], "body-lg": ["Source Serif 4"], "body-md": ["Source Serif 4"], headline: ["Libre Caslon Text"], body: ["Source Sans Three"], label: ["Source Sans Three"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "40px", fontWeight: "400"}], display: ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "400"}], "headline-lg-mobile": ["28px", {lineHeight: "36px", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "400"}], "label-md": ["14px", {lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}]}}}};</script>
+<style>
+        .sketch-border {
+            border: 1px solid #737872;
+            border-radius: 2px;
+            position: relative;
+        }
+        .sketch-border::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            border: 1px solid #737872;
+            opacity: 0.3;
+            transform: rotate(0.2deg);
+            pointer-events: none;
+        }
+        .grain-overlay {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        .wavy-divider {
+            height: 20px;
+            background: radial-gradient(circle at 10px -7px, transparent 8px, #c3c8c0 8px, #c3c8c0 9px, transparent 9px) repeat-x;
+            background-size: 20px 20px;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-fixed-dim selection:text-primary overflow-x-hidden font-body-md">
+<div class="fixed inset-0 grain-overlay z-50"></div>
+<!-- Navigation -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md">
+<nav class="flex justify-between items-center w-full px-gutter max-w-7xl mx-auto h-20"><div class="font-headline-md text-headline-md text-primary">Casa Rural Fontecha</div><div class="hidden md:flex items-center gap-8 font-body-lg text-body-lg"><a class="text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_13}}">Inicio</a><div class="relative group"><button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors"><span class="">Casas</span><span class="material-symbols-outlined text-sm">expand_more</span></button><div class="absolute top-full left-0 mt-2 w-48 bg-surface-container-low sketch-border shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"><div class="flex flex-col p-2"><a class="px-4 py-2 hover:bg-primary-container hover:text-on-primary-container rounded transition-colors font-body-md" href="{{DATA:SCREEN:SCREEN_9}}">Casa Lía</a><a class="px-4 py-2 hover:bg-primary-container hover:text-on-primary-container rounded transition-colors font-body-md" href="{{DATA:SCREEN:SCREEN_45}}">Casa Julio</a></div></div></div><a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Entorno</a><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">EN</a><button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md transition-transform active:scale-95 duration-150">Reservar en Booking.com</button></div><button class="md:hidden text-primary p-2" onclick="document.getElementById('mobile-menu').classList.remove('translate-x-full')"><span class="material-symbols-outlined text-3xl">menu</span></button></nav>
+</header>
+<main class="pt-32 pb-section-gap">
+<!-- Hero Section -->
+<section class="px-gutter max-w-7xl mx-auto mb-section-gap">
+<div class="text-center mb-16">
+<h1 class="font-display text-display text-primary mb-4">Un mapa de sensaciones</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto italic">
+                    Descubre el alma latente de la comarca del Carrión. Donde el agua susurra historias románicas y el tiempo se mide en el ciclo de las estaciones.
+                </p>
+</div>
+<!-- Bento Layout for Experience Icons -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+<div class="flex flex-col items-center p-8 bg-surface-container-low rounded-xl text-center group">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary opacity-60 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'FILL' 0, 'wght' 200;">nature</span>
+<h3 class="font-headline-md text-headline-md mb-2">Naturaleza</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Bosques de ribera y horizontes infinitos.</p>
+</div>
+<div class="flex flex-col items-center p-8 bg-surface-container-low rounded-xl text-center group">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary opacity-60 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'FILL' 0, 'wght' 200;">museum</span>
+<h3 class="font-headline-md text-headline-md mb-2">Cultura</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">El legado eterno del Románico Palentino.</p>
+</div>
+<div class="flex flex-col items-center p-8 bg-surface-container-low rounded-xl text-center group">
+<span class="material-symbols-outlined text-4xl mb-4 text-primary opacity-60 group-hover:opacity-100 transition-opacity" style="font-variation-settings: 'FILL' 0, 'wght' 200;">phishing</span>
+<h3 class="font-headline-md text-headline-md mb-2">Pesca</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Aguas cristalinas del coto de Pino del Río.</p>
+</div>
+</div>
+</section>
+<!-- Main Spots Section -->
+<section class="space-y-32">
+<!-- Spot 1: Rio Carrión -->
+<div class="px-gutter max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center reveal-on-scroll active">
+<div class="relative">
+<div class="sketch-border overflow-hidden bg-surface-container shadow-sm">
+<img class="w-full h-[500px] object-cover mix-blend-multiply opacity-90 transition-transform duration-700 hover:scale-105" data-alt="A serene river scene at dawn, with gentle water ripples and lush green willow trees leaning over the banks. The lighting is soft and golden, reflecting the warm minimalist aesthetic of a rustic Castilian retreat. The overall mood is peaceful and tactile, emphasizing the organic depth of the nature surrounding Rio Carrion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJZ6nUg5fjidP0hVi7kPjjlW5qJpqx-O08PQytD5rraqk5IgRYgorOB6xeMfK1Fk8uooKmKW3r3Yp5ez7TJyK4dK3duNToGHFEpJCN82TpkEjFXWnT6htFrrLgbADOp-KY56q92Aht3W-sM_K9576z3RZ-SwRa8IfYctaC0i0hh4Jp9pRWZbMpe5tpbfe4I2Uf5XwPg20GJ690aEJcCNq20ENrT1xQJC8FCAKzHl0q3q0ks6OI9dJThXbSmrT7_he9A8A6FVERZTax"/>
+</div>
+<div class="absolute -bottom-6 -right-6 w-32 h-32 opacity-10">
+<span class="material-symbols-outlined text-[120px]">water_drop</span>
+</div>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase mb-4 block">Sentir el agua</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Río Carrión</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        Nuestro pueblo respira al compás del río. Sus aguas transparentes son el refugio perfecto para el pescador paciente y el caminante que busca el frescor de la chopera.
+                    </p>
+<div class="w-16 h-px bg-outline-variant mb-8"></div>
+<p class="font-body-md text-body-md italic text-on-tertiary-fixed-variant">El Coto de Pino: Fama mundial entre los amantes de la pesca con mosca.</p>
+</div>
+</div>
+<!-- Wavy Divider -->
+<div class="wavy-divider opacity-40"></div>
+<!-- Spot 2: Villa Romana -->
+<div class="px-gutter max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center reveal-on-scroll md:flex-row-reverse active">
+<div class="md:order-2">
+<div class="sketch-border overflow-hidden bg-surface-container shadow-sm">
+<img class="w-full h-[500px] object-cover mix-blend-multiply opacity-90 transition-transform duration-700 hover:scale-105" data-alt="Exquisite Roman mosaic tiles featuring intricate geometric patterns and earthy tones of terracotta and cream. The close-up shot captures the tactile, weathered texture of the ancient stones under soft museum-style ambient lighting. The atmosphere evokes a sense of deep history and quiet contemplation within the Villa Romana La Olmeda." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDD5tTw6CX6oMaroK0EeYsxOffctxQmqnxbWMcKXZITsKzanZOlvGGH1Z7-ZdOfJsW3ulyJ-5a8cLV8prHeZ9GhYPDQAwAy9EBrLjIWI1HCnLGEVW6y4QX-iylf_r3iOysIxAu89RkPxKdYU3PMOf49A4CIuV_XiaB76Yu6nO8hfOYvbm1FeyhzE_zkSJCP1w01lbqu2SRm7OqJDDYkWqyzT8OsOk5JThzgJRRk-rBgaSbAxYXr4QxviRsjYSYWKyIyDTT-BqfSZfu"/>
+</div>
+</div>
+<div class="md:order-1">
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase mb-4 block">Huellas del tiempo</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Villa Romana La Olmeda</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        A escasos kilómetros, la historia se desentierra en uno de los yacimientos más importantes del mundo romano. Mosaicos perfectos que cuentan historias de hace dos milenios.
+                    </p>
+<div class="flex gap-4">
+<button class="border border-outline px-6 py-2 rounded-full font-label-md hover:bg-primary-container hover:text-on-primary-container transition-all">Explorar yacimiento</button>
+</div>
+</div>
+</div>
+<!-- Wavy Divider -->
+<div class="wavy-divider opacity-40"></div>
+<!-- Spot 3: Romanic Route -->
+<div class="px-gutter max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center reveal-on-scroll active">
+<div class="relative">
+<div class="sketch-border overflow-hidden bg-surface-container shadow-sm">
+<img class="w-full h-[500px] object-cover mix-blend-multiply opacity-90 transition-transform duration-700 hover:scale-105" data-alt="A small, ancient Romanesque church built from golden sandstone, standing solitary against a clear sky in the Palencia countryside. The image features a minimalist composition with high-quality whitespace, focusing on the simple, rounded arches and warm, tactile stone textures. The lighting is the crisp, bright light of a late afternoon in Spain." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ35EuO8nKuwu8pvU7X9VB9QXJUIWP2t3ozS6HkFlQAik4cErj48yZhMKqENHan5_F0UF5-kt-q7RvozAFsjp2V2LF4Eb_m5AVao81UhxnM4Pa54ScSy7mk7cgcmKV15eECwgox6RWE6rRPnUtDMXSI6bByAx97eB8jAnt_-C0R0V4w-YxiQJ3LzgZV41Z1oj56mcUE5YhoR_6JRmfpv514ZOJXERfJxFMo6d2Av1mPTAxHRpUyIs5getGAKNO1GFo8H2wFYwkWN6_"/>
+</div>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase mb-4 block">Piedra y Silencio</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Ruta del Románico</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        La mayor concentración de arte románico de Europa se encuentra en estas tierras. Iglesias de piedra dorada que emergen entre los trigales como guardianes de un pasado sereno.
+                    </p>
+<ul class="space-y-4 font-body-md text-body-md text-on-surface-variant">
+<li class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                            San Juan de Baños
+                        </li>
+<li class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                            San Martín de Frómista
+                        </li>
+<li class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                            Monasterio de San Zoilo
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mt-section-gap px-gutter max-w-5xl mx-auto text-center">
+<div class="bg-primary p-12 rounded-2xl text-on-primary relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-6">¿Quieres sentirlo por ti mismo?</h2>
+<p class="font-body-lg text-body-lg mb-8 opacity-90">Pino del Río es el punto de partida perfecto para tu mapa de sensaciones.</p>
+<a class="inline-block bg-secondary-fixed text-on-secondary-fixed px-10 py-4 rounded-full font-label-md transition-transform hover:scale-105 active:scale-95" href="{{DATA:SCREEN:SCREEN_13}}">Reservar estancia</a>
+</div>
+<!-- Abstract Texture Decor -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary opacity-10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-primary-container opacity-20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+</div>
+</section>
+</main>
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-12 max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0 text-center md:text-left">
+<div class="font-headline-sm text-headline-sm text-secondary mb-2">Pino del Río</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Pino del Río. A Castilian Escape.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact Us</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Instagram</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll reveal observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Subtle micro-interaction for the sketch borders
+        document.querySelectorAll('.sketch-border img').forEach(img => {
+            img.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = img.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                img.style.transform = `scale(1.05) translate(${x * 10}px, ${y * 10}px)`;
+            });
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = 'scale(1) translate(0, 0)';
+            });
+        });
+    </script>
+<div class="fixed inset-0 z-[100] bg-background translate-x-full transition-transform duration-300 ease-in-out md:hidden" id="mobile-menu"><div class="flex flex-col h-full p-6"><div class="flex justify-between items-center mb-12"><div class="font-headline-md text-headline-md text-primary">Casa Rural Fontecha</div><button class="text-primary p-2" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full')"><span class="material-symbols-outlined text-3xl">close</span></button></div><nav class="flex flex-col gap-6 font-display text-headline-lg"><a class="text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_13}}">Inicio</a><div class="flex flex-col gap-4"><span class="text-primary font-bold">Casas</span><div class="flex flex-col gap-4 pl-6 font-body-lg text-on-surface-variant"><a class="" href="{{DATA:SCREEN:SCREEN_9}}">Casa Lía</a><a class="" href="{{DATA:SCREEN:SCREEN_45}}">Casa Julio</a></div></div><a class="text-primary font-bold" href="#">Entorno</a><a class="text-on-surface-variant font-label-md uppercase tracking-widest" href="#">English (EN)</a></nav><div class="mt-auto pb-12"><button class="w-full bg-primary text-on-primary py-4 rounded-full font-label-md text-lg">Reservar en Booking.com</button></div></div></div></body></html>

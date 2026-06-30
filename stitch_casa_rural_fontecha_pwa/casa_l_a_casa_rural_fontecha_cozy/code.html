@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;500;700&amp;family=Source+Sans+Three:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+            font-size: 24px;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .postcard-border {
+            border: 1px solid #737872;
+            box-shadow: 12px 12px 0px -2px #f0eded, 12px 12px 0px 0px #737872;
+            transition: all 0.3s ease;
+        }
+        .postcard-border:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 14px 14px 0px -2px #f0eded, 14px 14px 0px 0px #904d00;
+        }
+        .sketch-underline {
+            position: relative;
+        }
+        .sketch-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            border-radius: 100% 20% 100% 10%;
+            opacity: 0.6;
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"secondary-fixed": "#ffdbd1", "inverse-on-surface": "#f2f1ec", "outline-variant": "#c5c8bd", "on-error-container": "#93000a", "surface-tint": "#546348", "on-secondary-fixed": "#3b0900", "secondary-fixed-dim": "#ffb5a0", "error-container": "#ffdad6", "surface-dim": "#dbdad5", "inverse-surface": "#30312e", "on-tertiary-container": "#d7b180", "on-primary-fixed": "#121f0a", "on-background": "#1b1c19", "surface-container": "#f0eee9", "surface-container-highest": "#e4e2dd", "surface-container-low": "#f5f3ee", "on-secondary-fixed-variant": "#743421", "tertiary-container": "#5e431c", "surface-bright": "#fbf9f4", error: "#ba1a1a", "on-error": "#ffffff", "on-primary-fixed-variant": "#3d4b32", tertiary: "#452d07", "on-surface": "#1b1c19", primary: "#28351e", "on-tertiary-fixed": "#291800", surface: "#fbf9f4", "on-primary-container": "#acbc9c", "primary-container": "#3e4c33", "primary-fixed-dim": "#bcccab", "on-primary": "#ffffff", "on-surface-variant": "#454840", "tertiary-fixed": "#ffddb4", "surface-container-lowest": "#ffffff", "surface-container-high": "#eae8e3", "surface-variant": "#e4e2dd", "inverse-primary": "#bcccab", "secondary-container": "#fda288", "primary-fixed": "#d7e8c6", background: "#fbf9f4", "on-tertiary-fixed-variant": "#5c421b", outline: "#75786f", "on-tertiary": "#ffffff", "on-secondary": "#ffffff", "on-secondary-container": "#773623", secondary: "#914a36", "tertiary-fixed-dim": "#e7c08e"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {gutter: "24px", unit: "8px", "margin-desktop": "64px", "section-gap": "120px", "margin-mobile": "20px"}, fontFamily: {"headline-lg": ["Libre Caslon Text"], display: ["Libre Caslon Text"], "headline-lg-mobile": ["Libre Caslon Text"], "headline-md": ["Libre Caslon Text"], "label-md": ["Source Serif 4"], "body-lg": ["Source Serif 4"], "body-md": ["Source Serif 4"], headline: ["Libre Caslon Text"], body: ["Source Sans Three"], label: ["Source Sans Three"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "40px", fontWeight: "400"}], display: ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "400"}], "headline-lg-mobile": ["28px", {lineHeight: "36px", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "400"}], "label-md": ["14px", {lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}]}}}};</script>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<div class="grain-overlay"></div>
+<!-- Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md">
+<nav class="flex justify-between items-center w-full px-gutter max-w-7xl mx-auto h-20">
+<div class="font-headline-md text-headline-md text-primary"><a class="" href="{{DATA:SCREEN:SCREEN_13}}">Casa Rural Fontecha</a></div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_13}}">Inicio</a>
+<div class="relative group">
+<button class="font-body-lg text-body-lg text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-1">
+        Casas
+        <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-2 w-48 bg-background border border-outline-variant rounded shadow-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+<div class="py-2">
+<a class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_9}}">Casa Lía</a>
+<a class="block px-4 py-2 text-body-md text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_45}}">Casa Julio</a>
+</div>
+</div>
+</div>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_6}}">Entorno</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#">EN</a><a class="ml-4 px-6 py-2 bg-primary text-on-primary rounded-full hover:opacity-90 transition-all font-label-md" href="#">Book on Booking.com</a>
+</div>
+<button class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.remove('translate-x-full')">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="fixed inset-0 z-[60] bg-background translate-x-full transition-transform duration-300 md:hidden" id="mobile-menu">
+<div class="flex flex-col h-full p-6">
+<div class="flex justify-end mb-8">
+<button class="text-primary" id="close-menu" onclick="document.getElementById('mobile-menu').classList.add('translate-x-full')">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-6">
+<a class="font-display text-3xl text-primary" href="{{DATA:SCREEN:SCREEN_13}}">Inicio</a>
+<div class="space-y-4">
+<p class="font-display text-3xl text-primary flex items-center justify-between">
+                    Casas
+                    <span class="material-symbols-outlined">expand_more</span>
+</p>
+<div class="pl-4 flex flex-col gap-4">
+<a class="font-body-lg text-body-lg text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_9}}">Casa Lía</a>
+<a class="font-body-lg text-body-lg text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_45}}">Casa Julio</a>
+</div>
+</div>
+<a class="font-display text-3xl text-primary" href="{{DATA:SCREEN:SCREEN_6}}">Entorno</a>
+<a class="font-display text-3xl text-primary" href="#">EN</a>
+<div class="mt-8">
+<a class="block w-full py-4 bg-primary text-on-primary text-center rounded-full font-label-md" href="#">Reservar en Booking.com</a>
+</div>
+</div>
+</div>
+</div></nav>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[819px] w-full overflow-hidden px-gutter md:px-margin-desktop py-8 transition-all duration-1000 opacity-100 translate-y-0">
+<div class="w-full h-full rounded-xl overflow-hidden relative group">
+<img alt="Casa Lía Exterior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, wide-angle shot of a beautifully restored stone cottage in the Spanish countryside during the golden hour. The architecture features warm limestone walls and dark wooden shutters, surrounded by soft wild grasses and a clear twilight sky. The lighting is ethereal and warm, emphasizing the rustic textures and peaceful solitude of the landscape. High-end architectural photography style with a soft, warm minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqsLUSjiYGh_gVH8hyb86mAwrw0d4YZPWurhYvX-3V8vFXmgH-F1URfU-9CFxUKYxTOICvvg4Z09SWqQJCXW0Ka3hx707uDvwHVx9RiDX1kcYTg9snoAb-2K4PhPPcHBqTEZsjp2Ec0JA6QeFOBlhvHwZ5R2GiTowdXPjEjCCARp28z8HyjnONbpTLvjofYQvEaW0iLODiZVSYkuPuykPvAIl_1OORKdcStJIRW_-nxQKwQqq6wzzzbaS-XaH90HNIIpLQvk4dox-K"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-12 left-12 text-white">
+<h1 class="font-display text-display md:text-6xl mb-2">Casa Lía</h1>
+<p class="font-body-lg text-body-lg opacity-90 italic">Un refugio entre encinas y piedra.</p>
+</div>
+</div>
+</section>
+<!-- Features & Postcard Section -->
+<section class="max-w-7xl mx-auto px-gutter md:px-margin-desktop py-section-gap transition-all duration-1000 opacity-100 translate-y-0">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+<!-- Left: Content -->
+<div class="md:col-span-7 space-y-16">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6 sketch-underline inline-block">Architecture and Comfort</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                            Thoughtfully restored to preserve its rustic soul, Casa Lía blends traditional Castilian masonry with modern, airy interiors. Every corner is designed to invite silence and provide a tactile connection to the landscape.
+                        </p>
+</div>
+<!-- Icon List -->
+<div class="grid grid-cols-2 gap-y-10 gap-x-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">bed</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface">3 Bedrooms</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">group</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface">6 Seats</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">fireplace</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface">Fireplace</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">landscape</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface">Views</span>
+</div>
+</div>
+<!-- Quote -->
+<div class="pt-8 border-l-2 border-outline-variant pl-8 italic">
+<p class="font-body-lg text-body-lg text-primary leading-relaxed mb-4">
+                            "The light that enters through the fireplace room at dawn is something I will never forget. It's not just a house; it's a pause in time."
+                        </p>
+<span class="font-label-md text-label-md text-secondary">— Elena M., October 2023</span>
+</div>
+</div>
+<!-- Right: Postcard Card -->
+<div class="md:col-span-5 flex justify-center md:justify-end">
+<div class="postcard-border bg-surface-container-low p-8 w-full max-w-sm rotate-1 md:rotate-2 hover:rotate-0">
+<div class="flex justify-between items-start mb-8">
+<div class="w-16 h-20 border border-outline-variant rounded-sm flex items-center justify-center bg-white/50">
+<span class="material-symbols-outlined text-outline">local_post_office</span>
+</div>
+<div class="text-right">
+<p class="font-label-md text-xs text-outline-variant uppercase">Destination</p>
+<p class="font-headline-md text-primary">Pino del Río</p>
+</div>
+</div>
+<div class="space-y-4 mb-10">
+<div class="h-px bg-outline-variant/30 w-full"></div>
+<div class="h-px bg-outline-variant/30 w-full"></div>
+<div class="h-px bg-outline-variant/30 w-full"></div>
+</div>
+<div class="text-center">
+<a class="inline-block w-full py-4 bg-primary text-on-primary font-label-md rounded hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm" href="#">
+                                Reservar en Booking.com
+                            </a>
+<p class="mt-4 font-body-md text-sm text-on-surface-variant italic">Safe travels, see you soon.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Atmosphere Image -->
+<section class="w-full px-gutter md:px-margin-desktop pb-section-gap transition-all duration-1000 opacity-100 translate-y-0">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="aspect-[4/5] rounded-xl overflow-hidden">
+<img alt="Interior Fireplace" class="w-full h-full object-cover" data-alt="A close-up interior shot of a cozy living room corner featuring a minimalist stone fireplace with a gentle, crackling fire. Soft, warm morning light filters through a nearby window, illuminating a comfortable linen armchair and a small wooden side table with a ceramic mug. The color palette consists of soft creams, oatmeal textures, and deep forest greens, creating a serene and inviting atmosphere of slow living and tactile comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqZCeVav4yAFBBpCk9R0L0rCH5rcVpalWdjGD1HFUioUinQF9vTq9fjb6i4Xg1EKPqcnKVVaFnN71RWMSqt-0tDMWmk2wqHKe0u4hASR6kYxrcwt_05fiTXKBLwjbxFdVk-ohrBSfj_iwSiDX9EptidYHVRGIW2bnDrMfqzoAufkdv9eL4NkNyo4R1oZmVE1LKJeKfIzE1pnYrJ4qE-ZJY531PlW3GMXTy-KarPY68EeogSimG1ODJqR0Y77oizkLBuleS2N8HxL1w"/>
+</div>
+<div class="aspect-[4/5] rounded-xl overflow-hidden mt-12 md:mt-24">
+<img alt="Window Views" class="w-full h-full object-cover" data-alt="A view looking out from a rustic wooden window frame onto a vast, rolling Spanish plateau during a misty morning. The foreground shows the weathered texture of the wood and a single sprig of dried lavender. The background is a soft-focus landscape of golden fields and distant dark green trees under a hazy, pale sky. The mood is one of profound quietude and connection to nature, following a warm minimalist and rustic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUuTk0HGpVlKkhX3DPMMUQJ0rV9x8R71KCmngKzLbMuN_X1sV0P5B3FV_8uGyN-rNVqKKAdN8iV5_wp5vkNcD-sgpQdfExyi7_7wFwfk8vYhyvPCRKSTfKiGsXe1ha29p8G8PU_I_QnpaIDEPOcSJt1CNhNTeP3ETBJzBZXGbJLV5EsC_MettvkMT405sTptygBv8GjoNws0KIpxb73f3H5nzZcCdAqVHytu22AyvkcByhdjtg8EGtzalWYCuQPO7Alpoyul3teUtD"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-12 md:py-16 max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="font-headline-sm text-headline-sm text-secondary mb-2">Pino del Río</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Pino del Río. A Castilian Escape.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Instagram</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the navigation
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('mousedown', () => {
+                link.classList.add('scale-95');
+            });
+            link.addEventListener('mouseup', () => {
+                link.classList.remove('scale-95');
+            });
+            link.addEventListener('mouseleave', () => {
+                link.classList.remove('scale-95');
+            });
+        });
+
+        // Simple intersection observer for fade-in effect
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-8');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

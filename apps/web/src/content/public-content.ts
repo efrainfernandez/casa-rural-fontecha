@@ -1,212 +1,48 @@
+export const BOOKING_URL = 'https://www.booking.com'
+
+export const SITE_IMAGES = {
+  homeHero:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDv5hRz2wxMVzatEI6qCVWf58azqQQJfFKDwxeXbD3vx6Oy2mcEK7lWerSkeuiASF8Jul6JTywG5iYDsw7dYRtrO037rtBTYQ0z_xEiC5dpqgE2vPFnhaPcG6TB894_CtJl-3XRU0gB83BhvR4F2B5Zf8rtHKE9ab5-t9VoeXEccpI6gUMcdCZwqSAGL3MKNlpKUDHxqQHAq68WlctQ_OnVbc-Mw5vQ-pnjfVHCWgR-CrWUjGFFnh_G_6xGBNZGWC8mYfGtPvNpLdOY',
+  casaLiaCard:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAfaiLsmcq_20pNupewd3sjn2fbXOoPJld_fFy5OpVuQSxjLHLue7wjljjTvBEe9Sl2mRnvwQJtIH-3qwIgnfz9cxa12ehN4DOFcO4cC4WO7dB34mPT5y7HjlmB7PdghOX9Nj4LCLkmzPVl3COuRcsKt3ENWRWZRR47HvbAUIL74TK0Fhirj6dCPwGsbaxPB99OjBVgUeo3HOzoy__s81gAuYzPWtaY_9n9vSkOmsggAMsqbJS1NyuJQqWev0QI9gqAcdThydSQW_xf',
+  casaJulioCard:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDrfy08FnKgQBVpyT8GNXTOcvwWiY6OBzBangt_7bOOH8R7O6gWcwDEsGa5ujWttCVaZMgQAO3R6wagcNcj0CFNedFSp6pADjWId88POSo5nTn4WrB5JvEj2q_i_87Z9yxDFAYU13wep7L5kIYa14_4qnAyKyKkzRGq9fhwq4-NV1afvcAW0lcP6wv10bntS1i0VOmlI93_ijvvKVW8lgpLjMzH03TzajLBPXcllWBQy-yJtZIw8D56loE1QPyLrYQpuM02tAZwggqG',
+  morningLight:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDSIEItaXYQGkVHbH4Z_uJNUbdM2POIxneS7zV_AoZ-ZdEIVLBg1Dl56YddAFWZzb-DRSMuHoY8mc5_ueteqXLCFZuMu8Utn5xKRzZU10ITLqrShjk6ST9CCCGMde_QtXq2qMovH6k_wn5Cst-Jj4raEE-d7eyYlQgfypXJBGlT-Al0VSmja91TTTqbRKNr8yo92Y55rbumZnHgc9mxBXBvfNPSI0zVxZ_WWkm0eo5IMfUj4InTpJMDka0uD3i02qKnCtNx65KTAGIo',
+  mountainTrail:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDSIEItaXYQGkVHbH4Z_uJNUbdM2POIxneS7zV_AoZ-ZdEIVLBg1Dl56YddAFWZzb-DRSMuHoY8mc5_ueteqXLCFZuMu8Utn5xKRzZU10ITLqrShjk6ST9CCCGMde_QtXq2qMovH6k_wn5Cst-Jj4raEE-d7eyYlQgfypXJBGlT-Al0VSmja91TTTqbRKNr8yo92Y55rbumZnHgc9mxBXBvfNPSI0zVxZ_WWkm0eo5IMfUj4InTpJMDka0uD3i02qKnCtNx65KTAGIo',
+  casaLiaHero:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDqsLUSjiYGh_gVH8hyb86mAwrw0d4YZPWurhYvX-3V8vFXmgH-F1URfU-9CFxUKYxTOICvvg4Z09SWqQJCXW0Ka3hx707uDvwHVx9RiDX1kcYTg9snoAb-2K4PhPPcHBqTEZsjp2Ec0JA6QeFOBlhvHwZ5R2GiTowdXPjEjCCARp28z8HyjnONbpTLvjofYQvEaW0iLODiZVSYkuPuykPvAIl_1OORKdcStJIRW_-nxQKwQqq6wzzzbaS-XaH90HNIIpLQvk4dox-K',
+  casaLiaFireplace:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDqZCeVav4yAFBBpCk9R0L0rCH5rcVpalWdjGD1HFUioUinQF9vTq9fjb6i4Xg1EKPqcnKVVaFnN71RWMSqt-0tDMWmk2wqHKe0u4hASR6kYxrcwt_05fiTXKBLwjbxFdVk-ohrBSfj_iwSiDX9EptidYHVRGIW2bnDrMfqzoAufkdv9eL4NkNyo4R1oZmVE1LKJeKfIzE1pnYrJ4qE-ZJY531PlW3GMXTy-KarPY68EeogSimG1ODJqR0Y77oizkLBuleS2N8HxL1w',
+  casaLiaWindow:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAUuTk0HGpVlKkhX3DPMMUQJ0rV9x8R71KCmngKzLbMuN_X1sV0P5B3FV_8uGyN-rNVqKKAdN8iV5_wp5vkNcD-sgpQdfExyi7_7wFwfk8vYhyvPCRKSTfKiGsXe1ha29p8G8PU_I_QnpaIDEPOcSJt1CNhNTeP3ETBJzBZXGbJLV5EsC_MettvkMT405sTptygBv8GjoNws0KIpxb73f3H5nzZcCdAqVHytu22AyvkcByhdjtg8EGtzalWYCuQPO7Alpoyul3teUtD',
+  rioCarrion:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuDJZ6nUg5fjidP0hVi7kPjjlW5qJpqx-O08PQytD5rraqk5IgRYgorOB6xeMfK1Fk8uooKmKW3r3Yp5ez7TJyK4dK3duNToGHFEpJCN82TpkEjFXWnT6htFrrLgbADOp-KY56q92Aht3W-sM_K9576z3RZ-SwRa8IfYctaC0i0hh4Jp9pRWZbMpe5tpbfe4I2Uf5XwPg20GJ690aEJcCNq20ENrT1xQJC8FCAKzHl0q3q0ks6OI9dJThXbSmrT7_he9A8A6FVERZTax',
+  villaRomana:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCDD5tTw6CX6oMaroK0EeYsxOffctxQmqnxbWMcKXZITsKzanZOlvGGH1Z7-ZdOfJsW3ulyJ-5a8cLV8prHeZ9GhYPDQAwAy9EBrLjIWI1HCnLGEVW6y4QX-iylf_r3iOysIxAu89RkPxKdYU3PMOf49A4CIuV_XiaB76Yu6nO8hfOYvbm1FeyhzE_zkSJCP1w01lbqu2SRm7OqJDDYkWqyzT8OsOk5JThzgJRRk-rBgaSbAxYXr4QxviRsjYSYWKyIyDTT-BqfSZfu',
+  romanico:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuCZ35EuO8nKuwu8pvU7X9VB9QXJUIWP2t3ozS6HkFlQAik4cErj48yZhMKqENHan5_F0UF5-kt-q7RvozAFsjp2V2LF4Eb_m5AVao81UhxnM4Pa54ScSy7mk7cgcmKV15eECwgox6RWE6rRPnUtDMXSI6bByAx97eB8jAnt_-C0R0V4w-YxiQJ3LzgZV41Z1oj56mcUE5YhoR_6JRmfpv514ZOJXERfJxFMo6d2Av1mPTAxHRpUyIs5getGAKNO1GFo8H2wFYwkWN6_',
+} as const
+
 export const ACCOMMODATIONS = [
   {
     slug: 'casa-lia',
     name: 'Casa Lía',
-    shortTitle: 'Casa rural para 6 personas junto al río Carrión',
-    capacity: 6,
-    bedrooms: 3,
-    summary: 'Casa rural para 6 personas con chimenea y balcón con vistas al río Carrión.',
-    audience: 'Ideal para escapadas familiares y estancias tranquilas en pareja o con amigos.',
-    features: ['Chimenea', 'Balcón', 'Vistas al río', 'Zona de estar amplia'],
-    quickFacts: [
-      'Ambiente acogedor para desconectar con calma.',
-      'Configuración cómoda para estancias familiares.',
-      'Relación directa con el paisaje de la ribera.',
-    ],
-    spaces: [
-      'Salón principal con zona de convivencia.',
-      'Dormitorios pensados para un descanso cómodo.',
-      'Balcón con protagonismo de las vistas y la luz natural.',
-      'Espacios interiores centrados en una experiencia cálida y doméstica.',
-    ],
-    gallery: [
-      {
-        title: 'Vista principal',
-        description: 'Bloque principal para la futura foto exterior o de acceso.',
-      },
-      {
-        title: 'Salón y chimenea',
-        description: 'Espacio pensado para reflejar calidez, reunión y descanso.',
-      },
-      {
-        title: 'Dormitorios',
-        description: 'Galería preparada para mostrar distribución y confort.',
-      },
-      {
-        title: 'Balcón y entorno',
-        description: 'Área visual para destacar la cercanía al río Carrión.',
-      },
-    ],
+    heroImage: SITE_IMAGES.casaLiaHero,
+    cardImage: SITE_IMAGES.casaLiaCard,
+    galleryImages: [SITE_IMAGES.casaLiaFireplace, SITE_IMAGES.casaLiaWindow],
   },
   {
     slug: 'casa-julio',
     name: 'Casa Julio',
-    shortTitle: 'Casa rural para 8 personas con jardín y barbacoa',
-    capacity: 8,
-    bedrooms: 4,
-    summary: 'Casa rural para 8 personas con amplia terraza, jardín y barbacoa.',
-    audience: 'Pensada para familias numerosas o grupos que quieran convivir con comodidad.',
-    features: ['Terraza', 'Jardín', 'Barbacoa', 'Espacios para grupos'],
-    quickFacts: [
-      'Distribución orientada a reuniones amplias.',
-      'Espacios exteriores con mucho peso en la experiencia.',
-      'Buena encaje para familias y grupos que priorizan convivencia.',
-    ],
-    spaces: [
-      'Zona de día amplia para compartir tiempo en grupo.',
-      'Dormitorios suficientes para estancias de mayor capacidad.',
-      'Terraza y jardín como extensión natural de la vivienda.',
-      'Barbacoa y exterior pensados para comidas y sobremesas al aire libre.',
-    ],
-    gallery: [
-      {
-        title: 'Vista exterior',
-        description: 'Bloque reservado para una foto principal con más presencia de exterior.',
-      },
-      {
-        title: 'Zona común',
-        description: 'Espacio visual para enseñar amplitud y vida en grupo.',
-      },
-      {
-        title: 'Dormitorios',
-        description: 'Área preparada para mostrar orden, capacidad y descanso.',
-      },
-      {
-        title: 'Terraza y jardín',
-        description: 'Galería para reforzar el valor del exterior y la barbacoa.',
-      },
-    ],
+    heroImage: SITE_IMAGES.casaJulioCard,
+    cardImage: SITE_IMAGES.casaJulioCard,
+    galleryImages: [SITE_IMAGES.casaJulioCard, SITE_IMAGES.morningLight],
   },
 ] as const
-
-export const ENVIRONMENT_HIGHLIGHTS = [
-  {
-    title: 'Río Carrión',
-    description: 'Un entorno sereno para pasear, descansar y disfrutar de la ribera a pocos minutos.',
-  },
-  {
-    title: 'Pesca',
-    description: 'La zona destaca por su vínculo con el río y por planes pausados ligados a la naturaleza.',
-  },
-  {
-    title: 'Senderismo',
-    description: 'Rutas y caminos del entorno rural palentino para desconectar sin alejarse del alojamiento.',
-  },
-  {
-    title: 'Villa Romana La Olmeda',
-    description: 'Uno de los grandes reclamos culturales de la zona, perfecto para completar la estancia.',
-  },
-] as const
-
-export const ENVIRONMENT_DETAILS = {
-  intro:
-    'Pino del Río permite construir un discurso turístico muy claro: pueblo pequeño, paisaje de ribera, tradición rural y actividades ligadas al descanso y al aire libre.',
-  facts: [
-    'Municipio de la provincia de Palencia, en Castilla y León.',
-    'Situado en la comarca de Vega-Valdavia y vinculado al río Carrión.',
-    'Entorno de baja densidad, pensado para ritmos tranquilos y escapadas de desconexión.',
-    'La localidad incluye también el núcleo de Celadilla del Río.',
-  ],
-  places: [
-    {
-      title: 'Casco urbano y ribera',
-      description: 'La cercanía entre pueblo y río permite una relación muy directa con el paisaje y los paseos cortos.',
-    },
-    {
-      title: 'Área recreativa',
-      description: 'Zona valorada en verano para ocio al aire libre, sombra, descanso y planes familiares.',
-    },
-    {
-      title: 'Zonas de pesca',
-      description: 'El entorno del Carrión es uno de los elementos diferenciales del municipio para turismo pausado.',
-    },
-    {
-      title: 'Laguna de Valdeperal',
-      description: 'Paraje natural interesante para rutas cortas, observación y fotografía de paisaje.',
-    },
-    {
-      title: 'Ermita del Nido',
-      description: 'Punto de interés tradicional ligado a romerías y a la identidad local.',
-    },
-    {
-      title: 'Iglesia de San Pedro',
-      description: 'Referencia patrimonial del municipio y parte de su relato cultural.',
-    },
-  ],
-  plans: [
-    'Paseos junto al río y por caminos agrícolas del entorno.',
-    'Pesca deportiva en el área del Carrión.',
-    'Rutas en bicicleta por pista y caminos rurales.',
-    'Visitas culturales complementarias, incluida Villa Romana La Olmeda.',
-    'Escapadas centradas en gastronomía local y descanso sin prisa.',
-  ],
-  sources: [
-    {
-      label: 'Wikipedia: Pino del Río',
-      href: 'https://es.wikipedia.org/wiki/Pino_del_R%C3%ADo',
-    },
-    {
-      label: 'Web oficial del Ayuntamiento de Pino del Río',
-      href: 'https://pinodelrio.es/',
-    },
-  ],
-} as const
-
-export const TRUST_POINTS = [
-  'Dos alojamientos con perfiles distintos para adaptarse a cada tipo de escapada.',
-  'Ubicación en Pino del Río, con foco en descanso, naturaleza y planes tranquilos.',
-  'Presentación clara del entorno para reforzar la decisión antes del contacto directo.',
-  'Arquitectura de contenidos preparada para crecer después con reservas y disponibilidad.',
-] as const
-
-export const REVIEW_SNIPPETS = [
-  {
-    quote: 'La propuesta transmite una escapada tranquila, muy conectada con el paisaje y el ritmo del pueblo.',
-    author: 'Resumen editorial de experiencia',
-  },
-  {
-    quote: 'Casa Lía funciona muy bien para una estancia acogedora, mientras que Casa Julio invita a convivir más en grupo.',
-    author: 'Resumen editorial de producto',
-  },
-  {
-    quote: 'El valor diferencial está en combinar alojamiento, río, pesca, senderismo y planes culturales cercanos.',
-    author: 'Resumen editorial de destino',
-  },
-  {
-    quote: 'La ubicación en Pino del Río ayuda a vender descanso real, no solo una casa bonita.',
-    author: 'Resumen editorial de entorno',
-  },
-  {
-    quote: 'La futura carga de imágenes reales puede convertir esta base pública en una web comercial muy sólida.',
-    author: 'Resumen editorial de crecimiento',
-  },
-  {
-    quote: 'La combinación de 6 y 8 plazas cubre tanto escapadas familiares como grupos con necesidades distintas.',
-    author: 'Resumen editorial de capacidad',
-  },
-] as const
-
-export const TRUST_SECTIONS = [
-  {
-    title: 'Claridad desde el primer vistazo',
-    description: 'La home y las páginas interiores están planteadas para enseñar rápido qué ofrece cada casa y para quién es.',
-  },
-  {
-    title: 'Enfoque en destino, no solo en inmueble',
-    description: 'La marca se apoya en Pino del Río, el Carrión y los planes del entorno para elevar la percepción del alojamiento.',
-  },
-  {
-    title: 'Base lista para evolucionar',
-    description: 'La estructura pública ya deja preparado el terreno para meter fotos reales, disponibilidad y conversiones más adelante.',
-  },
-] as const
-
-export const REVIEW_SOURCE_NOTE =
-  'No he podido extraer reseñas reales de Google Maps desde este entorno porque la ficha pública no permite scraping automatizado fiable aquí. La sección queda preparada para sustituir estos textos editoriales por reseñas verificadas cuando tengamos acceso a una fuente estable o a la API correspondiente.'
 
 export const CONTACT_DETAILS = {
   email: 'reservas@casaruralfontecha.com',
   location: 'Pino del Río, Palencia',
-  townHallPhone: '979 180192',
-  townHallEmail: 'secretario@pinodelrio.es',
 } as const

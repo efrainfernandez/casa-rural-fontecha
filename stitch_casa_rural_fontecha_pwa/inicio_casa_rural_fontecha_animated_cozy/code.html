@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;500;700&amp;family=Source+Sans+Three:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .hand-drawn-border {
+            border: 1px solid #737872;
+            border-radius: 2px 4px 2px 6px / 4px 2px 5px 2px;
+        }
+        .sketch-frame {
+            position: relative;
+            box-shadow: 2px 4px 15px rgba(0,0,0,0.05);
+        }
+        .sketch-frame::after {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border: 1.5px solid #252624;
+            pointer-events: none;
+            border-radius: 4px 10px 4px 12px / 12px 4px 10px 4px;
+            opacity: 0.6;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        .wavy-divider {
+            height: 24px;
+            background-repeat: repeat-x;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='24' viewBox='0 0 100 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12C25 12 25 2 50 2C75 2 75 22 100 22' stroke='%23737872' stroke-width='1'/%3E%3C/svg%3E");
+        }
+        
+        /* Entrance Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* Improved Spark Effect */
+        @keyframes float-up {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(-300px) translateX(var(--drift-x)); opacity: 0; }
+        }
+        .spark-particle {
+            position: absolute;
+            background: radial-gradient(circle, #ffb77d 20%, #fe932c 60%, transparent 100%);
+            border-radius: 50%;
+            filter: blur(1px);
+            box-shadow: 0 0 10px #fe932c;
+            animation: float-up linear infinite forwards;
+            pointer-events: none;
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"secondary-fixed": "#ffdbd1", "inverse-on-surface": "#f2f1ec", "outline-variant": "#c5c8bd", "on-error-container": "#93000a", "surface-tint": "#546348", "on-secondary-fixed": "#3b0900", "secondary-fixed-dim": "#ffb5a0", "error-container": "#ffdad6", "surface-dim": "#dbdad5", "inverse-surface": "#30312e", "on-tertiary-container": "#d7b180", "on-primary-fixed": "#121f0a", "on-background": "#1b1c19", "surface-container": "#f0eee9", "surface-container-highest": "#e4e2dd", "surface-container-low": "#f5f3ee", "on-secondary-fixed-variant": "#743421", "tertiary-container": "#5e431c", "surface-bright": "#fbf9f4", error: "#ba1a1a", "on-error": "#ffffff", "on-primary-fixed-variant": "#3d4b32", tertiary: "#452d07", "on-surface": "#1b1c19", primary: "#28351e", "on-tertiary-fixed": "#291800", surface: "#fbf9f4", "on-primary-container": "#acbc9c", "primary-container": "#3e4c33", "primary-fixed-dim": "#bcccab", "on-primary": "#ffffff", "on-surface-variant": "#454840", "tertiary-fixed": "#ffddb4", "surface-container-lowest": "#ffffff", "surface-container-high": "#eae8e3", "surface-variant": "#e4e2dd", "inverse-primary": "#bcccab", "secondary-container": "#fda288", "primary-fixed": "#d7e8c6", background: "#fbf9f4", "on-tertiary-fixed-variant": "#5c421b", outline: "#75786f", "on-tertiary": "#ffffff", "on-secondary": "#ffffff", "on-secondary-container": "#773623", secondary: "#914a36", "tertiary-fixed-dim": "#e7c08e"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {gutter: "24px", unit: "8px", "margin-desktop": "64px", "section-gap": "120px", "margin-mobile": "20px"}, fontFamily: {"headline-lg": ["Libre Caslon Text"], display: ["Libre Caslon Text"], "headline-lg-mobile": ["Libre Caslon Text"], "headline-md": ["Libre Caslon Text"], "label-md": ["Source Serif 4"], "body-lg": ["Source Serif 4"], "body-md": ["Source Serif 4"], headline: ["Libre Caslon Text"], body: ["Source Sans Three"], label: ["Source Sans Three"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "40px", fontWeight: "400"}], display: ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "400"}], "headline-lg-mobile": ["28px", {lineHeight: "36px", fontWeight: "400"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "400"}], "label-md": ["14px", {lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}]}}}};</script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed-variant overflow-x-hidden">
+<div class="grain-overlay"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-40 bg-background/80 backdrop-blur-md h-20 transition-all duration-300">
+<nav class="flex justify-between items-center w-full px-gutter max-w-7xl mx-auto h-full">
+<div class="font-headline-md text-headline-md text-primary tracking-tight">Casa Rural Fontecha</div>
+<div class="hidden md:flex items-center gap-8"><a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-lg text-body-lg" href="{{DATA:SCREEN:SCREEN_13}}">Inicio</a><div class="relative group">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors pb-1 font-body-lg text-body-lg">
+    Casas
+    <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-2 w-48 bg-background border border-outline-variant rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+<div class="py-2">
+<a class="block px-4 py-3 font-headline-sm text-headline-sm text-primary hover:bg-surface-container-low transition-colors" href="{{DATA:SCREEN:SCREEN_9}}">Casa Lía</a>
+<a class="block px-4 py-3 font-headline-sm text-headline-sm text-primary hover:bg-surface-container-low transition-colors" href="{{DATA:SCREEN:SCREEN_45}}">Casa Julio</a>
+</div>
+</div>
+</div><a class="text-on-surface-variant hover:text-primary transition-colors pb-1 font-body-lg text-body-lg" href="{{DATA:SCREEN:SCREEN_6}}">Entorno</a><a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md uppercase tracking-widest ml-4" href="#">EN</a></div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full hover:scale-95 transition-transform duration-150 font-label-md text-label-md uppercase tracking-widest hidden md:block">Reservar en Booking.com</button>
+<button aria-label="Menu" class="md:hidden flex items-center justify-center p-2 text-primary" id="mobile-menu-button"><span class="material-symbols-outlined text-3xl">menu</span></button></nav>
+</header><div class="fixed inset-0 z-50 bg-background translate-x-full transition-transform duration-300 ease-out md:hidden flex flex-col" id="mobile-menu-drawer"><div class="flex justify-between items-center px-gutter h-20 border-b border-outline-variant"><div class="font-headline-md text-headline-md text-primary tracking-tight">Casa Rural Fontecha</div><button class="p-2 text-primary" id="close-menu-button"><span class="material-symbols-outlined text-3xl">close</span></button></div><div class="flex-grow overflow-y-auto py-8 px-gutter flex flex-col gap-8"><a class="font-display text-3xl text-primary" href="{{DATA:SCREEN:SCREEN_13}}">Inicio</a><div class="flex flex-col gap-4"><div class="font-display text-3xl text-primary flex items-center justify-between">Casas</div><div class="pl-4 flex flex-col gap-4 border-l border-outline-variant"><a class="font-body-lg text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_9}}">Casa Lía</a><a class="font-body-lg text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_45}}">Casa Julio</a></div></div><a class="font-display text-3xl text-primary" href="{{DATA:SCREEN:SCREEN_6}}">Entorno</a><a class="font-label-md text-label-md uppercase tracking-widest text-secondary" href="#">EN - English</a><div class="mt-auto pt-8"><button class="w-full bg-primary text-on-primary py-4 rounded-full font-label-md text-label-md uppercase tracking-widest">Reservar en Booking.com</button></div></div></div>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center justify-center pt-20 px-gutter overflow-hidden">
+<div class="absolute inset-0 z-0 scale-105 transition-transform duration-1000 ease-out hover:scale-100">
+<img alt="" class="w-full h-full object-cover brightness-[0.7] saturate-[0.8]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv5hRz2wxMVzatEI6qCVWf58azqQQJfFKDwxeXbD3vx6Oy2mcEK7lWerSkeuiASF8Jul6JTywG5iYDsw7dYRtrO037rtBTYQ0z_xEiC5dpqgE2vPFnhaPcG6TB894_CtJl-3XRU0gB83BhvR4F2B5Zf8rtHKE9ab5-t9VoeXEccpI6gUMcdCZwqSAGL3MKNlpKUDHxqQHAq68WlctQ_OnVbc-Mw5vQ-pnjfVHCWgR-CrWUjGFFnh_G_6xGBNZGWC8mYfGtPvNpLdOY"/>
+</div>
+<div class="relative z-10 text-center max-w-3xl text-surface reveal is-visible">
+<span class="inline-block mb-6 font-label-md text-label-md uppercase tracking-[0.2em] opacity-80">Montaña Palentina</span>
+<h1 class="font-display text-display md:text-6xl mb-8 leading-tight">Tu hogar en la Montaña Palentina.</h1>
+<div class="w-16 h-[2px] bg-secondary-container mx-auto mb-8 rounded-full"></div>
+<p class="font-body-lg text-body-lg italic opacity-90">Siente el calor de la chimenea.</p>
+<div class="mt-12">
+<button class="material-symbols-outlined text-4xl animate-bounce cursor-pointer">expand_more</button>
+</div>
+</div>
+</section>
+<!-- Spacer Divider -->
+<div class="wavy-divider max-w-md mx-auto my-section-gap opacity-30 reveal is-visible"></div>
+<!-- Section: Nuestras Casas (Bento-ish Grid) -->
+<section class="max-w-7xl mx-auto px-gutter py-section-gap" id="houses">
+<div class="text-center mb-16 reveal is-visible">
+<h2 class="font-headline-lg text-headline-lg mb-4">Nuestras Casas</h2>
+<div class="h-1 w-24 bg-secondary mx-auto rounded-full opacity-20"></div>
+</div>
+<div class="grid md:grid-cols-2 gap-16 md:gap-24">
+<!-- House 1: Lía -->
+<a class="group cursor-pointer reveal block is-visible" href="{{DATA:SCREEN:SCREEN_9}}">
+<div class="sketch-frame aspect-[4/5] overflow-hidden mb-8 transition-transform duration-500 group-hover:-translate-y-2">
+<img alt="Casa Lía" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfaiLsmcq_20pNupewd3sjn2fbXOoPJld_fFy5OpVuQSxjLHLue7wjljjTvBEe9Sl2mRnvwQJtIH-3qwIgnfz9cxa12ehN4DOFcO4cC4WO7dB34mPT5y7HjlmB7PdghOX9Nj4LCLkmzPVl3COuRcsKt3ENWRWZRR47HvbAUIL74TK0Fhirj6dCPwGsbaxPB99OjBVgUeo3HOzoy__s81gAuYzPWtaY_9n9vSkOmsggAMsqbJS1NyuJQqWev0QI9gqAcdThydSQW_xf"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Casa Lía</h3>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Para dos almas inquietas.</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-3xl group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+<div class="mt-4 border-b border-outline-variant opacity-40 group-hover:opacity-100 transition-opacity"></div>
+</a>
+<!-- House 2: Julio -->
+<div class="group cursor-pointer md:mt-24 reveal is-visible">
+<div class="sketch-frame aspect-[4/5] overflow-hidden mb-8 transition-transform duration-500 group-hover:-translate-y-2">
+<img alt="Casa Julio" class="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrfy08FnKgQBVpyT8GNXTOcvwWiY6OBzBangt_7bOOH8R7O6gWcwDEsGa5ujWttCVaZMgQAO3R6wagcNcj0CFNedFSp6pADjWId88POSo5nTn4WrB5JvEj2q_i_87Z9yxDFAYU13wep7L5kIYa14_4qnAyKyKkzRGq9fhwq4-NV1afvcAW0lcP6wv10bntS1i0VOmlI93_ijvvKVW8lgpLjMzH03TzajLBPXcllWBQy-yJtZIw8D56loE1QPyLrYQpuM02tAZwggqG"/>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Casa Julio</h3>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Refugio de piedra y tiempo.</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-3xl group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+<div class="mt-4 border-b border-outline-variant opacity-40 group-hover:opacity-100 transition-opacity"></div>
+</div>
+</div>
+</section>
+<!-- Section: Coming Home -->
+<section class="bg-surface-container-low py-32 px-gutter overflow-hidden">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-16 reveal is-visible">
+<div class="md:w-1/2 relative">
+<div class="absolute -top-8 -left-8 text-secondary-container opacity-40">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 0;">cottage</span>
+</div>
+<h2 class="font-display text-4xl md:text-5xl leading-tight mb-8">Volver es el <span class="italic text-secondary">verdadero</span> viaje.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-sm">
+                        Hay lugares que no se visitan, se habitan. El sonido del crujir de la madera es la única banda sonora que necesitas.
+                    </p>
+<a class="inline-flex items-center gap-4 font-label-md text-label-md uppercase tracking-widest text-secondary hover:gap-6 transition-all duration-300" href="#">
+                        Nuestra historia
+                        <span class="w-12 h-px bg-secondary"></span>
+</a>
+</div>
+<div class="md:w-1/2 relative reveal is-visible">
+<div class="hand-drawn-border p-4 bg-background">
+<img alt="Morning light" class="w-full h-auto grayscale-[0.2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSIEItaXYQGkVHbH4Z_uJNUbdM2POIxneS7zV_AoZ-ZdEIVLBg1Dl56YddAFWZzb-DRSMuHoY8mc5_ueteqXLCFZuMu8Utn5xKRzZU10ITLqrShjk6ST9CCCGMde_QtXq2qMovH6k_wn5Cst-Jj4raEE-d7eyYlQgfypXJBGlT-Al0VSmja91TTTqbRKNr8yo92Y55rbumZnHgc9mxBXBvfNPSI0zVxZ_WWkm0eo5IMfUj4InTpJMDka0uD3i02qKnCtNx65KTAGIo"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Spark Area -->
+<section class="relative h-[614px] md:h-[819px] bg-primary flex items-center justify-center overflow-hidden" id="fireplace-area">
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" id="spark-container"><div class="spark-particle" style="width: 5.79616px; height: 5.79616px; left: 42.3622%; bottom: -20px; animation-duration: 6.06328s; --drift-x: 22.057534697714832px;"></div><div class="spark-particle" style="width: 2.97461px; height: 2.97461px; left: 95.3381%; bottom: -20px; animation-duration: 3.62697s; --drift-x: -38.29369497986745px;"></div><div class="spark-particle" style="width: 3.16908px; height: 3.16908px; left: 28.3176%; bottom: -20px; animation-duration: 6.77016s; --drift-x: -7.156749203195478px;"></div><div class="spark-particle" style="width: 5.65235px; height: 5.65235px; left: 84.0373%; bottom: -20px; animation-duration: 5.8683s; --drift-x: 46.18249043619389px;"></div><div class="spark-particle" style="width: 2.74317px; height: 2.74317px; left: 10.2105%; bottom: -20px; animation-duration: 4.30689s; --drift-x: 18.1809798023965px;"></div><div class="spark-particle" style="width: 5.61715px; height: 5.61715px; left: 15.7006%; bottom: -20px; animation-duration: 5.99736s; --drift-x: -37.22223670251693px;"></div><div class="spark-particle" style="width: 5.43229px; height: 5.43229px; left: 12.4524%; bottom: -20px; animation-duration: 4.08606s; --drift-x: -23.609425404360273px;"></div><div class="spark-particle" style="width: 5.45852px; height: 5.45852px; left: 87.245%; bottom: -20px; animation-duration: 5.66589s; --drift-x: -19.386571684651845px;"></div><div class="spark-particle" style="width: 2.22589px; height: 2.22589px; left: 93.8421%; bottom: -20px; animation-duration: 5.7865s; --drift-x: 11.675428018840162px;"></div><div class="spark-particle" style="width: 3.69941px; height: 3.69941px; left: 99.1551%; bottom: -20px; animation-duration: 5.38484s; --drift-x: 34.47519902061422px;"></div><div class="spark-particle" style="width: 3.13403px; height: 3.13403px; left: 84.6395%; bottom: -20px; animation-duration: 5.55348s; --drift-x: 25.093469279485436px;"></div><div class="spark-particle" style="width: 3.23033px; height: 3.23033px; left: 88.6048%; bottom: -20px; animation-duration: 4.29246s; --drift-x: -17.588138441634594px;"></div><div class="spark-particle" style="width: 3.9327px; height: 3.9327px; left: 13.2034%; bottom: -20px; animation-duration: 5.51929s; --drift-x: -3.0622568102718573px;"></div><div class="spark-particle" style="width: 3.69589px; height: 3.69589px; left: 85.5363%; bottom: -20px; animation-duration: 6.25896s; --drift-x: -48.72746382165276px;"></div><div class="spark-particle" style="width: 4.61517px; height: 4.61517px; left: 73.2725%; bottom: -20px; animation-duration: 5.79634s; --drift-x: 18.08944712761732px;"></div><div class="spark-particle" style="width: 5.67976px; height: 5.67976px; left: 11.3801%; bottom: -20px; animation-duration: 5.819s; --drift-x: -42.52017159646672px;"></div><div class="spark-particle" style="width: 3.80871px; height: 3.80871px; left: 25.635%; bottom: -20px; animation-duration: 6.08103s; --drift-x: 12.356202114918524px;"></div><div class="spark-particle" style="width: 4.71208px; height: 4.71208px; left: 23.2214%; bottom: -20px; animation-duration: 5.7204s; --drift-x: -2.787613632410202px;"></div><div class="spark-particle" style="width: 4.28435px; height: 4.28435px; left: 70.4487%; bottom: -20px; animation-duration: 5.78497s; --drift-x: -47.46116360547439px;"></div><div class="spark-particle" style="width: 5.60638px; height: 5.60638px; left: 31.7126%; bottom: -20px; animation-duration: 4.89345s; --drift-x: 40.31976846870826px;"></div><div class="spark-particle" style="width: 2.37609px; height: 2.37609px; left: 89.9638%; bottom: -20px; animation-duration: 4.86389s; --drift-x: 29.650047647768083px;"></div><div class="spark-particle" style="width: 3.34488px; height: 3.34488px; left: 0.485488%; bottom: -20px; animation-duration: 4.95313s; --drift-x: -34.03150677312584px;"></div><div class="spark-particle" style="width: 2.57504px; height: 2.57504px; left: 97.1488%; bottom: -20px; animation-duration: 6.7375s; --drift-x: 15.794505827647853px;"></div><div class="spark-particle" style="width: 2.62189px; height: 2.62189px; left: 5.57511%; bottom: -20px; animation-duration: 5.13708s; --drift-x: 19.727573171289226px;"></div><div class="spark-particle" style="width: 4.12814px; height: 4.12814px; left: 4.96658%; bottom: -20px; animation-duration: 4.27458s; --drift-x: -42.93433628435529px;"></div><div class="spark-particle" style="width: 2.54344px; height: 2.54344px; left: 91.5074%; bottom: -20px; animation-duration: 4.51869s; --drift-x: -5.665373286890707px;"></div><div class="spark-particle" style="width: 4.40026px; height: 4.40026px; left: 27.2418%; bottom: -20px; animation-duration: 5.75597s; --drift-x: 13.39861338935966px;"></div><div class="spark-particle" style="width: 3.0994px; height: 3.0994px; left: 61.9646%; bottom: -20px; animation-duration: 4.07903s; --drift-x: 9.856504537785026px;"></div><div class="spark-particle" style="width: 3.77555px; height: 3.77555px; left: 5.73755%; bottom: -20px; animation-duration: 4.31605s; --drift-x: -34.422080773034935px;"></div><div class="spark-particle" style="width: 4.17274px; height: 4.17274px; left: 27.5522%; bottom: -20px; animation-duration: 4.29979s; --drift-x: 29.236003683593236px;"></div><div class="spark-particle" style="width: 2.40259px; height: 2.40259px; left: 89.1481%; bottom: -20px; animation-duration: 6.56707s; --drift-x: -11.769599968848466px;"></div><div class="spark-particle" style="width: 5.35343px; height: 5.35343px; left: 86.2834%; bottom: -20px; animation-duration: 4.28238s; --drift-x: -5.659890020502734px;"></div><div class="spark-particle" style="width: 4.95px; height: 4.95px; left: 18.5866%; bottom: -20px; animation-duration: 5.28944s; --drift-x: 28.071495288983506px;"></div><div class="spark-particle" style="width: 2.64006px; height: 2.64006px; left: 71.0843%; bottom: -20px; animation-duration: 4.40838s; --drift-x: -38.251703508639864px;"></div><div class="spark-particle" style="width: 4.87108px; height: 4.87108px; left: 62.6791%; bottom: -20px; animation-duration: 6.65654s; --drift-x: -9.51177934459022px;"></div><div class="spark-particle" style="width: 5.10677px; height: 5.10677px; left: 59.5614%; bottom: -20px; animation-duration: 6.81353s; --drift-x: -15.087985813397687px;"></div><div class="spark-particle" style="width: 3.18367px; height: 3.18367px; left: 10.4487%; bottom: -20px; animation-duration: 3.97193s; --drift-x: 32.73516670864761px;"></div><div class="spark-particle" style="width: 2.86923px; height: 2.86923px; left: 25.1328%; bottom: -20px; animation-duration: 6.89013s; --drift-x: 3.781654729879025px;"></div><div class="spark-particle" style="width: 3.58096px; height: 3.58096px; left: 10.0492%; bottom: -20px; animation-duration: 3.70896s; --drift-x: -43.90969370461939px;"></div><div class="spark-particle" style="width: 5.63517px; height: 5.63517px; left: 59.5355%; bottom: -20px; animation-duration: 4.78779s; --drift-x: 10.540244033990497px;"></div><div class="spark-particle" style="width: 5.72212px; height: 5.72212px; left: 42.6975%; bottom: -20px; animation-duration: 5.93309s; --drift-x: -4.16292655252013px;"></div><div class="spark-particle" style="width: 3.48428px; height: 3.48428px; left: 23.7603%; bottom: -20px; animation-duration: 6.94334s; --drift-x: 38.98397852873051px;"></div><div class="spark-particle" style="width: 4.30248px; height: 4.30248px; left: 62.1201%; bottom: -20px; animation-duration: 4.76962s; --drift-x: 22.047365936749376px;"></div><div class="spark-particle" style="width: 3.7574px; height: 3.7574px; left: 80.0436%; bottom: -20px; animation-duration: 3.49593s; --drift-x: -41.30032378856704px;"></div><div class="spark-particle" style="width: 2.57308px; height: 2.57308px; left: 55.1221%; bottom: -20px; animation-duration: 6.53776s; --drift-x: -13.043562565645495px;"></div><div class="spark-particle" style="width: 4.59604px; height: 4.59604px; left: 52.1299%; bottom: -20px; animation-duration: 5.85748s; --drift-x: 29.54214095593396px;"></div><div class="spark-particle" style="width: 5.57656px; height: 5.57656px; left: 23.0047%; bottom: -20px; animation-duration: 3.053s; --drift-x: -19.823664741029944px;"></div><div class="spark-particle" style="width: 3.09903px; height: 3.09903px; left: 39.2283%; bottom: -20px; animation-duration: 3.58918s; --drift-x: 44.90538620077634px;"></div><div class="spark-particle" style="width: 4.87421px; height: 4.87421px; left: 6.3833%; bottom: -20px; animation-duration: 5.79117s; --drift-x: -0.36810802936178px;"></div><div class="spark-particle" style="width: 5.55395px; height: 5.55395px; left: 68.9114%; bottom: -20px; animation-duration: 6.43105s; --drift-x: -12.147687831293974px;"></div></div>
+<div class="relative z-10 text-center px-gutter reveal is-visible">
+<div class="mb-12">
+<span class="material-symbols-outlined text-secondary-container text-6xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<h2 class="font-display text-4xl md:text-5xl text-surface mb-6">La chispa que enciende el descanso.</h2>
+<p class="font-body-lg text-body-lg text-surface-container-high opacity-80 max-w-xl mx-auto italic">
+                    Contempla el fuego. Olvida el reloj. El silencio de la montaña cuida de ti.
+                </p>
+</div>
+<!-- Background Texture -->
+<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/charcoal.png')]"></div>
+</section>
+<!-- Section: Short Emotional Phrasings -->
+<section class="py-section-gap px-gutter text-center reveal is-visible">
+<div class="max-w-2xl mx-auto">
+<h3 class="font-headline-lg text-headline-lg mb-12 italic opacity-60">Esencia rural, alma moderna.</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<span class="block font-label-md text-label-md uppercase tracking-tighter text-on-surface-variant mb-2">Aire</span>
+<span class="font-headline-md text-headline-md text-secondary">Puro</span>
+</div>
+<div>
+<span class="block font-label-md text-label-md uppercase tracking-tighter text-on-surface-variant mb-2">Sueño</span>
+<span class="font-headline-md text-headline-md text-secondary">Profundo</span>
+</div>
+<div>
+<span class="block font-label-md text-label-md uppercase tracking-tighter text-on-surface-variant mb-2">Fuego</span>
+<span class="font-headline-md text-headline-md text-secondary">Vivo</span>
+</div>
+<div>
+<span class="block font-label-md text-label-md uppercase tracking-tighter text-on-surface-variant mb-2">Vida</span>
+<span class="font-headline-md text-headline-md text-secondary">Lenta</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Content -->
+<section class="py-section-gap px-gutter bg-background">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16 reveal is-visible">
+<h2 class="font-display text-4xl md:text-5xl mb-4">Caminos entre Cumbres</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic max-w-2xl mx-auto">La Montaña Palentina te espera con rutas que susurran historias de piedra y viento.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div class="hand-drawn-border p-4 bg-surface-container-low reveal is-visible">
+<img alt="Mountain Trail" class="w-full h-auto grayscale-[0.2] brightness-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSIEItaXYQGkVHbH4Z_uJNUbdM2POIxneS7zV_AoZ-ZdEIVLBg1Dl56YddAFWZzb-DRSMuHoY8mc5_ueteqXLCFZuMu8Utn5xKRzZU10ITLqrShjk6ST9CCCGMde_QtXq2qMovH6k_wn5Cst-Jj4raEE-d7eyYlQgfypXJBGlT-Al0VSmja91TTTqbRKNr8yo92Y55rbumZnHgc9mxBXBvfNPSI0zVxZ_WWkm0eo5IMfUj4InTpJMDka0uD3i02qKnCtNx65KTAGIo"/>
+</div>
+<div class="space-y-12">
+<div class="group reveal is-visible">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Senda del Oso</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Un paseo entre robles centenarios donde el tiempo parece detenerse.</p>
+<div class="mt-4 h-px w-12 bg-secondary opacity-30 group-hover:w-full transition-all duration-500"></div>
+</div>
+<div class="group reveal is-visible">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Pozo de las Lomas</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">El reflejo de los picos en aguas glaciares, un espejo del alma.</p>
+<div class="mt-4 h-px w-12 bg-secondary opacity-30 group-hover:w-full transition-all duration-500"></div>
+</div>
+<div class="group reveal is-visible">
+<h4 class="font-headline-md text-headline-md text-primary mb-2">Tejeda de Tosande</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Catedrales vivas de madera milenaria que guardan el silencio del bosque.</p>
+<div class="mt-4 h-px w-12 bg-secondary opacity-30 group-hover:w-full transition-all duration-500"></div>
+</div>
+<a class="inline-flex items-center gap-4 font-label-md text-label-md uppercase tracking-widest text-secondary hover:gap-6 transition-all duration-300 reveal is-visible" href="#">
+                    Explorar senderos
+                    <span class="w-12 h-px bg-secondary"></span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-section-gap px-gutter bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16 reveal is-visible">
+<h2 class="font-display text-4xl md:text-5xl mb-4">Vuestras Historias</h2>
+<div class="h-1 w-24 bg-secondary mx-auto rounded-full opacity-20"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="hand-drawn-border p-8 bg-background flex flex-col h-full reveal is-visible">
+<div class="flex gap-1 mb-6 text-secondary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg italic text-on-surface-variant mb-8 flex-grow">"El crujir de la chimenea y el silencio absoluto de la noche nos devolvieron la paz que habíamos olvidado."</p>
+<span class="font-label-md text-label-md uppercase tracking-widest opacity-60">Elena &amp; Marc</span>
+</div>
+<div class="hand-drawn-border p-8 bg-background flex flex-col h-full reveal is-visible" style="transition-delay: 100ms;">
+<div class="flex gap-1 mb-6 text-secondary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg italic text-on-surface-variant mb-8 flex-grow">"No es solo una casa, es un refugio donde cada detalle de madera y piedra te abraza. Volveremos siempre."</p>
+<span class="font-label-md text-label-md uppercase tracking-widest opacity-60">Javier R.</span>
+</div>
+<div class="hand-drawn-border p-8 bg-background flex flex-col h-full reveal is-visible" style="transition-delay: 200ms;">
+<div class="flex gap-1 mb-6 text-secondary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-lg text-body-lg italic text-on-surface-variant mb-8 flex-grow">"Despertar con la luz dorada filtrándose por la ventana y el olor a café en la montaña es el verdadero lujo."</p>
+<span class="font-label-md text-label-md uppercase tracking-widest opacity-60">Sofía L.</span>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-12 md:py-16 max-w-7xl mx-auto">
+<div class="mb-8 md:mb-0 text-center md:text-left">
+<div class="font-headline-sm text-headline-sm text-secondary mb-2 tracking-tight">Casa Rural Fontecha</div>
+<p class="text-on-surface-variant font-body-md text-body-md">© 2024 Casa Rural Fontecha. Una escapada castellana.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-12">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md" href="#">Contact Us</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md text-body-md flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">photo_camera</span>
+                    Instagram
+                </a>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll Reveal IntersectionObserver
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Once visible, we can stop observing it
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Dynamic Spark/Ember effect
+        const sparkContainer = document.getElementById('spark-container');
+        
+        function createSpark() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            
+            const spark = document.createElement('div');
+            spark.className = 'spark-particle';
+            
+            // Randomized properties
+            const size = Math.random() * 4 + 2;
+            const startX = Math.random() * 100;
+            const duration = Math.random() * 4 + 3;
+            const drift = (Math.random() - 0.5) * 100; // Drift range
+            
+            spark.style.width = `${size}px`;
+            spark.style.height = `${size}px`;
+            spark.style.left = `${startX}%`;
+            spark.style.bottom = `-20px`;
+            spark.style.animationDuration = `${duration}s`;
+            spark.style.setProperty('--drift-x', `${drift}px`);
+            
+            sparkContainer.appendChild(spark);
+            
+            // Clean up spark after animation
+            setTimeout(() => {
+                spark.remove();
+            }, duration * 1000);
+        }
+
+        // Higher frequency for a richer fireplace feel
+        const sparkInterval = setInterval(createSpark, 150);
+
+        // Header scroll behavior
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('h-16', 'shadow-sm');
+                header.classList.remove('h-20');
+            } else {
+                header.classList.remove('h-16', 'shadow-sm');
+                header.classList.add('h-20');
+            }
+        });
+    </script>
+<script>const mobileMenuBtn = document.getElementById('mobile-menu-button'); const closeMenuBtn = document.getElementById('close-menu-button'); const mobileDrawer = document.getElementById('mobile-menu-drawer'); if (mobileMenuBtn && closeMenuBtn && mobileDrawer) { mobileMenuBtn.addEventListener('click', () => { mobileDrawer.classList.remove('translate-x-full'); document.body.style.overflow = 'hidden'; }); closeMenuBtn.addEventListener('click', () => { mobileDrawer.classList.add('translate-x-full'); document.body.style.overflow = ''; }); }</script></body></html>
