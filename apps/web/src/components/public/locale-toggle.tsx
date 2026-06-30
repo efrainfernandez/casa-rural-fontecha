@@ -27,7 +27,6 @@ export default function LocaleToggle({ locale, className, mobile = false }: Loca
     })
   }
 
-  const label = locale === 'es' ? 'EN' : 'ES'
   const ariaLabel = locale === 'es' ? 'Switch to English' : 'Cambiar a español'
 
   if (mobile) {
@@ -36,6 +35,7 @@ export default function LocaleToggle({ locale, className, mobile = false }: Loca
         type="button"
         onClick={switchLocale}
         disabled={isPending}
+        aria-label={ariaLabel}
         className={cn(
           'font-label-md text-label-md tracking-widest text-secondary uppercase transition-opacity',
           isPending && 'opacity-60',
@@ -54,15 +54,12 @@ export default function LocaleToggle({ locale, className, mobile = false }: Loca
       disabled={isPending}
       aria-label={ariaLabel}
       className={cn(
-        'font-label-md text-label-md tracking-widest uppercase transition-colors',
-        locale === 'es'
-          ? 'text-on-surface-variant hover:text-secondary'
-          : 'border-b-2 border-primary pb-1 font-bold text-primary',
+        'shrink-0 pb-1 font-label-md text-[14px] leading-5 tracking-widest text-on-surface-variant uppercase transition-colors hover:text-secondary',
         isPending && 'opacity-60',
         className,
       )}
     >
-      {label}
+      {locale === 'es' ? 'EN' : 'ES'}
     </button>
   )
 }

@@ -71,7 +71,7 @@ export default function HouseDetail({ house, houseCopy, labels, bookingLabel }: 
           <RevealOnScroll className="flex justify-center md:col-span-5 md:justify-end is-visible">
             <div className="postcard-border w-full max-w-sm rotate-1 bg-surface-container-low p-8 md:rotate-2 hover:rotate-0">
               <div className="mb-8 flex items-start justify-between">
-                <div className="flex h-20 w-16 items-center justify-center rounded-sm border border-outline-variant bg-white/50">
+                <div className="flex h-20 w-16 items-center justify-center rounded-sm border border-outline-variant bg-surface-container-high/50">
                   <span className="material-symbols-outlined text-outline">local_post_office</span>
                 </div>
                 <div className="text-right">

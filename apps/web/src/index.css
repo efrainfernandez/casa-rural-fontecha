@@ -41,6 +41,45 @@
     font-weight: 600;
   }
 
+  .text-headline-md {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .text-body-md {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .text-label-md {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .header-nav-link {
+    font-family: var(--font-source-sans), 'Source Sans 3', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .header-booking-btn {
+    min-width: 15.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+  }
+
   .text-display {
     font-size: 48px;
     line-height: 56px;
@@ -49,7 +88,7 @@
   }
 
   .hand-drawn-border {
-    border: 1px solid #737872;
+    border: 1px solid var(--rs-sketch-border);
     border-radius: 2px 4px 2px 6px / 4px 2px 5px 2px;
   }
 
@@ -65,14 +104,14 @@
     left: -4px;
     right: -4px;
     bottom: -4px;
-    border: 1.5px solid #252624;
+    border: 1.5px solid var(--rs-sketch-frame);
     pointer-events: none;
     border-radius: 4px 10px 4px 12px / 12px 4px 10px 4px;
     opacity: 0.6;
   }
 
   .sketch-border {
-    border: 1px solid #737872;
+    border: 1px solid var(--rs-sketch-border);
     border-radius: 2px;
     position: relative;
   }
@@ -84,21 +123,21 @@
     left: -2px;
     right: -2px;
     bottom: -2px;
-    border: 1px solid #737872;
+    border: 1px solid var(--rs-sketch-border);
     opacity: 0.3;
     transform: rotate(0.2deg);
     pointer-events: none;
   }
 
   .postcard-border {
-    border: 1px solid #737872;
-    box-shadow: 12px 12px 0 -2px #f0eded, 12px 12px 0 0 #737872;
+    border: 1px solid var(--rs-sketch-border);
+    box-shadow: 12px 12px 0 -2px var(--rs-postcard-shadow), 12px 12px 0 0 var(--rs-sketch-border);
     transition: all 0.3s ease;
   }
 
   .postcard-border:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 14px 14px 0 -2px #f0eded, 14px 14px 0 0 #904d00;
+    box-shadow: 14px 14px 0 -2px var(--rs-postcard-shadow), 14px 14px 0 0 #904d00;
   }
 
   .sketch-underline {

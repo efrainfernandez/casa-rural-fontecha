@@ -35,7 +35,7 @@ export default async function RootLayout({
   const dictionary = getDictionary(locale)
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} className="light" suppressHydrationWarning>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
@@ -47,12 +47,7 @@ export default async function RootLayout({
       >
         <Providers>
           <GrainOverlay />
-          <SiteHeader
-            locale={locale}
-            labels={dictionary.nav}
-            themeLabels={dictionary.theme}
-            bookingLabel={dictionary.booking}
-          />
+          <SiteHeader locale={locale} labels={dictionary.nav} bookingLabel={dictionary.booking} />
           {children}
           <SiteFooter labels={dictionary.footer} />
         </Providers>

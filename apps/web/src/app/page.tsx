@@ -41,7 +41,7 @@ export default async function HomePage() {
           />
         </div>
 
-        <RevealOnScroll className="relative z-10 max-w-3xl text-center text-surface is-visible">
+        <RevealOnScroll className="relative z-10 max-w-3xl text-center text-hero-fg is-visible">
           <span className="font-label-md mb-6 inline-block text-label-md tracking-[0.2em] uppercase opacity-80">
             {home.heroEyebrow}
           </span>

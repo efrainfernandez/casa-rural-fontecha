@@ -9,7 +9,6 @@ import { cn } from '@casa-rural-fontecha/ui/lib/utils'
 
 import BookingButton from '@/components/public/booking-button'
 import LocaleToggle from '@/components/public/locale-toggle'
-import ThemeToggle from '@/components/public/theme-toggle'
 import type { Dictionary, Locale } from '@/i18n'
 
 const HOUSE_LINKS = [
@@ -29,10 +28,10 @@ function NavLink({ href, label, isActive, className }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        'pb-1 font-body-lg text-body-lg transition-colors',
+        'header-nav-link pb-1 transition-colors',
         isActive
           ? 'border-b-2 border-primary font-bold text-primary'
-          : 'text-on-surface-variant hover:text-primary',
+          : 'font-normal text-on-surface-variant hover:text-primary',
         className,
       )}
     >
@@ -44,11 +43,10 @@ function NavLink({ href, label, isActive, className }: NavLinkProps) {
 type SiteHeaderProps = {
   locale: Locale
   labels: Dictionary['nav']
-  themeLabels: Dictionary['theme']
   bookingLabel: string
 }
 
-export default function SiteHeader({ locale, labels, themeLabels, bookingLabel }: SiteHeaderProps) {
+export default function SiteHeader({ locale, labels, bookingLabel }: SiteHeaderProps) {
   const pathname = usePathname()
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [isCompact, setIsCompact] = useState(false)
@@ -93,21 +91,21 @@ export default function SiteHeader({ locale, labels, themeLabels, bookingLabel }
         )}
       >
         <nav className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-gutter">
-          <Link href="/" className="font-headline-md text-headline-md tracking-tight text-primary">
+          <Link href="/" className="shrink-0 font-headline-md text-headline-md tracking-tight text-primary">
             Casa Rural Fontecha
           </Link>
 
-          <div className="hidden items-center gap-6 md:flex">
+          <div className="hidden shrink-0 items-center gap-8 md:flex">
             <NavLink href="/" label={labels.home} isActive={isHome} />
 
-            <div className="group relative">
+            <div className="group relative shrink-0">
               <button
                 type="button"
                 className={cn(
-                  'flex items-center gap-1 pb-1 font-body-lg text-body-lg transition-colors',
+                  'header-nav-link flex items-center gap-1 pb-1 transition-colors',
                   isHouseRoute
                     ? 'border-b-2 border-primary font-bold text-primary'
-                    : 'text-on-surface-variant hover:text-primary',
+                    : 'font-normal text-on-surface-variant hover:text-primary',
                 )}
               >
                 {labels.houses}
@@ -120,7 +118,7 @@ export default function SiteHeader({ locale, labels, themeLabels, bookingLabel }
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="block px-4 py-3 font-headline-md text-headline-md text-primary transition-colors hover:bg-surface-container-low"
+                        className="block px-4 py-2 font-body-md text-body-md text-on-surface-variant transition-colors hover:bg-surface-container-low hover:text-primary"
                       >
                         {link.label}
                       </Link>
@@ -132,11 +130,9 @@ export default function SiteHeader({ locale, labels, themeLabels, bookingLabel }
 
             <NavLink href="/entorno" label={labels.environment} isActive={isEntorno} />
 
-            <div className="flex items-center gap-3">
-              <LocaleToggle locale={locale} />
-              <ThemeToggle labels={themeLabels} />
-              <BookingButton className="rounded-full">{bookingLabel}</BookingButton>
-            </div>
+            <LocaleToggle locale={locale} className="shrink-0" />
+
+            <BookingButton className="header-booking-btn rounded-full">{bookingLabel}</BookingButton>
           </div>
 
           <button
@@ -190,10 +186,7 @@ export default function SiteHeader({ locale, labels, themeLabels, bookingLabel }
             {labels.environment}
           </Link>
 
-          <div className="flex items-center gap-4">
-            <LocaleToggle locale={locale} mobile />
-            <ThemeToggle labels={themeLabels} />
-          </div>
+          <LocaleToggle locale={locale} mobile />
 
           <div className="mt-auto pt-8">
             <BookingButton className="w-full rounded-full py-4 text-center">{bookingLabel}</BookingButton>

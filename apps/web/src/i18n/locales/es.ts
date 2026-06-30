@@ -10,11 +10,6 @@ export const es = {
     englishMobile: 'EN - English',
     spanishMobile: 'ES - Español',
   },
-  theme: {
-    toggle: 'Cambiar tema',
-    light: 'Modo claro',
-    dark: 'Modo oscuro',
-  },
   booking: 'Reservar en Booking.com',
   home: {
     heroEyebrow: 'Montaña Palentina',

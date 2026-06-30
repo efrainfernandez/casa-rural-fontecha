@@ -2,18 +2,13 @@ export const en = {
   nav: {
     home: 'Home',
     houses: 'Houses',
-    environment: 'Surroundings',
+    environment: 'Environment',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     switchToEnglish: 'EN',
     switchToSpanish: 'ES',
     englishMobile: 'EN - English',
     spanishMobile: 'ES - Español',
-  },
-  theme: {
-    toggle: 'Toggle theme',
-    light: 'Light mode',
-    dark: 'Dark mode',
   },
   booking: 'Book on Booking.com',
   home: {
