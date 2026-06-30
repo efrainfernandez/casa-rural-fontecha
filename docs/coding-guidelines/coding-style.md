@@ -375,4 +375,5 @@ chore: update schema
 
 - Mantener consistencia con el código existente
 - Esta guía se actualiza cuando cambian decisiones de arquitectura
+- Para Prettier, ESLint, CodeGraph, Turborepo y flujo de trabajo, ver [herramientas-desarrollo.md](./herramientas-desarrollo.md)
 - Ante la duda, leer la [Guía de Agentes IA](../../GUIA_AGENTES_IA_CASA_RURAL_FONTECHA.md) para contexto del dominio
