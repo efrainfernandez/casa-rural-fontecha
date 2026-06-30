@@ -39,7 +39,9 @@
     "db:generate": "turbo -F @casa-rural-fontecha/db db:generate",
     "db:migrate": "turbo -F @casa-rural-fontecha/db db:migrate",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@casa-rural-fontecha/env": "workspace:*",
@@ -48,10 +50,15 @@
   },
   "devDependencies": {
     "@casa-rural-fontecha/config": "workspace:*",
+    "@eslint/js": "^9",
     "@types/bun": "catalog:",
+    "eslint": "^9",
+    "eslint-config-next": "^16.2.9",
+    "eslint-config-prettier": "^10.1.8",
     "prettier": "3.8.3",
     "turbo": "^2.9.16",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "typescript-eslint": "^8.62.1"
   },
   "packageManager": "bun@1.3.13"
 }

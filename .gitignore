@@ -50,5 +50,6 @@ coverage
 # Misc
 *.tgz
 .cache
+.eslintcache
 tmp
 temp
