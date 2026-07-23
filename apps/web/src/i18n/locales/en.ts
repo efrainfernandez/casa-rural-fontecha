@@ -3,6 +3,7 @@ export const en = {
     home: 'Home',
     houses: 'Houses',
     environment: 'Environment',
+    contact: 'Contact',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     switchToEnglish: 'EN',
@@ -59,7 +60,8 @@ export const en = {
         author: 'Elena & Marc',
       },
       {
-        quote: 'It is not just a house, it is a refuge where every detail of wood and stone embraces you. We will always return.',
+        quote:
+          'It is not just a house, it is a refuge where every detail of wood and stone embraces you. We will always return.',
         author: 'Javier R.',
       },
       {
@@ -143,6 +145,19 @@ export const en = {
     ctaTitle: 'Want to feel it for yourself?',
     ctaBody: 'Pino del Río is the perfect starting point for your map of sensations.',
     ctaButton: 'Book your stay',
+  },
+  contact: {
+    eyebrow: 'We are nearby',
+    title: 'Contact',
+    intro: 'Call or email us with any questions about your stay.',
+    phone: 'Phone',
+    email: 'Email',
+    address: 'Address',
+    mapTitle: 'How to get here',
+    mapIntro: 'Find us in Pino del Río, beside the Carrión River in the heart of the Palencia Mountains.',
+    mapPopup: 'Casa Rural Fontecha',
+    googleMaps: 'Google Maps',
+    appleMaps: 'Apple Maps',
   },
   footer: {
     tagline: 'A Castilian escape.',

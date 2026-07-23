@@ -14,7 +14,7 @@ export default function BookingButton({ className, children }: BookingButtonProp
       target="_blank"
       rel="noreferrer"
       className={cn(
-        'inline-block bg-primary px-6 py-2.5 font-label-md text-label-md uppercase tracking-widest text-on-primary transition-transform duration-150 hover:scale-95',
+        'inline-block bg-primary px-6 py-2.5 font-label-md font-semibold uppercase text-on-primary transition-transform duration-150 hover:scale-95',
         className,
       )}
     >

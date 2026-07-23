@@ -53,6 +53,7 @@ export default function SiteHeader({ locale, labels, bookingLabel }: SiteHeaderP
 
   const isHome = pathname === '/'
   const isEntorno = pathname === '/entorno'
+  const isContact = pathname === '/contacto'
   const isHouseRoute = pathname.startsWith('/casas')
 
   useEffect(() => {
@@ -130,6 +131,8 @@ export default function SiteHeader({ locale, labels, bookingLabel }: SiteHeaderP
 
             <NavLink href="/entorno" label={labels.environment} isActive={isEntorno} />
 
+            <NavLink href="/contacto" label={labels.contact} isActive={isContact} />
+
             <LocaleToggle locale={locale} className="shrink-0" />
 
             <BookingButton className="header-booking-btn rounded-full">{bookingLabel}</BookingButton>
@@ -184,6 +187,10 @@ export default function SiteHeader({ locale, labels, bookingLabel }: SiteHeaderP
 
           <Link href="/entorno" className="font-display text-3xl text-primary" onClick={closeMobileMenu}>
             {labels.environment}
+          </Link>
+
+          <Link href="/contacto" className="font-display text-3xl text-primary" onClick={closeMobileMenu}>
+            {labels.contact}
           </Link>
 
           <LocaleToggle locale={locale} mobile />

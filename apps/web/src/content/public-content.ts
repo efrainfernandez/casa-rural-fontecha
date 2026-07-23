@@ -44,5 +44,12 @@ export const ACCOMMODATIONS = [
 
 export const CONTACT_DETAILS = {
   email: 'reservas@casaruralfontecha.com',
+  phone: '678 876 678',
+  phoneHref: '+34678876678',
+  address: 'Calle del Caño, 4, 34110 Pino del Río, Palencia, España',
   location: 'Pino del Río, Palencia',
+  coordinates: {
+    latitude: 42.644198,
+    longitude: -4.807965,
+  },
 } as const

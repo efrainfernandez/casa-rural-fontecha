@@ -3,6 +3,7 @@ export const es = {
     home: 'Inicio',
     houses: 'Casas',
     environment: 'Entorno',
+    contact: 'Contacto',
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
     switchToEnglish: 'EN',
@@ -59,7 +60,8 @@ export const es = {
         author: 'Elena & Marc',
       },
       {
-        quote: 'No es solo una casa, es un refugio donde cada detalle de madera y piedra te abraza. Volveremos siempre.',
+        quote:
+          'No es solo una casa, es un refugio donde cada detalle de madera y piedra te abraza. Volveremos siempre.',
         author: 'Javier R.',
       },
       {
@@ -103,8 +105,7 @@ export const es = {
         { icon: 'deck', label: 'Terraza' },
         { icon: 'outdoor_grill', label: 'Barbacoa' },
       ],
-      quote:
-        'No es solo una casa, es un refugio donde cada detalle de madera y piedra te abraza. Volveremos siempre.',
+      quote: 'No es solo una casa, es un refugio donde cada detalle de madera y piedra te abraza. Volveremos siempre.',
       quoteAuthor: 'Javier R.',
     },
   },
@@ -144,6 +145,19 @@ export const es = {
     ctaTitle: '¿Quieres sentirlo por ti mismo?',
     ctaBody: 'Pino del Río es el punto de partida perfecto para tu mapa de sensaciones.',
     ctaButton: 'Reservar estancia',
+  },
+  contact: {
+    eyebrow: 'Estamos cerca',
+    title: 'Contacto',
+    intro: 'Escríbenos o llámanos para resolver cualquier duda sobre tu estancia.',
+    phone: 'Teléfono',
+    email: 'Correo electrónico',
+    address: 'Dirección',
+    mapTitle: 'Cómo llegar',
+    mapIntro: 'Encuéntranos en Pino del Río, a orillas del río Carrión y en plena Montaña Palentina.',
+    mapPopup: 'Casa Rural Fontecha',
+    googleMaps: 'Google Maps',
+    appleMaps: 'Mapas de Apple',
   },
   footer: {
     tagline: 'Una escapada castellana.',
