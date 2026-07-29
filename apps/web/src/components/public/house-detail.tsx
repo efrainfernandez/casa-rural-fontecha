@@ -1,9 +1,8 @@
-import Image from 'next/image'
-
 import BookingButton from '@/components/public/booking-button'
+import HouseImageSlider from '@/components/public/house-image-slider'
 import RevealOnScroll from '@/components/public/reveal-on-scroll'
-import type { Dictionary } from '@/i18n'
 import type { ACCOMMODATIONS } from '@/content/public-content'
+import type { Dictionary } from '@/i18n'
 
 type Accommodation = (typeof ACCOMMODATIONS)[number]
 
@@ -19,25 +18,21 @@ type HouseDetailProps = {
 export default function HouseDetail({ house, houseCopy, labels, bookingLabel }: HouseDetailProps) {
   return (
     <main className="bg-background pt-20 text-on-background">
-      <section className="relative h-[819px] w-full overflow-hidden px-gutter py-8 md:px-margin-desktop">
-        <div className="group relative h-full w-full overflow-hidden rounded-xl">
-          <Image
-            src={house.heroImage}
-            alt={`${house.name} ${labels.exteriorAlt}`}
-            fill
-            priority
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-          <div className="absolute bottom-12 left-12 text-white">
-            <h1 className="font-display mb-2 text-display md:text-6xl">{house.name}</h1>
-            <p className="font-body-lg text-body-lg italic opacity-90">{houseCopy.heroTagline}</p>
-          </div>
+      <section className="mx-auto max-w-6xl px-gutter pt-10 md:px-margin-desktop md:pt-12">
+        <div className="mb-8 text-center">
+          <h1 className="font-display mb-3 text-5xl md:text-6xl">{house.name}</h1>
+          <p className="font-body-lg text-body-lg text-on-surface-variant italic">{houseCopy.heroTagline}</p>
         </div>
+        <HouseImageSlider
+          images={house.sliderImages}
+          houseName={house.name}
+          imageLabel={labels.sliderImage}
+          previousLabel={labels.previousImage}
+          nextLabel={labels.nextImage}
+        />
       </section>
 
-      <section className="mx-auto max-w-7xl px-gutter py-section-gap md:px-margin-desktop">
+      <section className="mx-auto max-w-7xl px-gutter py-16 md:px-margin-desktop md:py-20">
         <div className="grid grid-cols-1 items-start gap-16 md:grid-cols-12">
           <div className="space-y-16 md:col-span-7">
             <RevealOnScroll className="is-visible">
@@ -48,7 +43,7 @@ export default function HouseDetail({ house, houseCopy, labels, bookingLabel }: 
             </RevealOnScroll>
 
             <RevealOnScroll className="is-visible">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-10">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3">
                 {houseCopy.amenities.map((amenity) => {
                   return (
                     <div key={amenity.label} className="flex items-center gap-4">
@@ -63,7 +58,9 @@ export default function HouseDetail({ house, houseCopy, labels, bookingLabel }: 
             </RevealOnScroll>
 
             <RevealOnScroll className="border-l-2 border-outline-variant pt-8 pl-8 italic is-visible">
-              <p className="font-body-lg mb-4 text-body-lg leading-relaxed text-primary">&ldquo;{houseCopy.quote}&rdquo;</p>
+              <p className="font-body-lg mb-4 text-body-lg leading-relaxed text-primary">
+                &ldquo;{houseCopy.quote}&rdquo;
+              </p>
               <span className="font-label-md text-label-md text-secondary">— {houseCopy.quoteAuthor}</span>
             </RevealOnScroll>
           </div>
@@ -93,29 +90,6 @@ export default function HouseDetail({ house, houseCopy, labels, bookingLabel }: 
                 <p className="font-body-md mt-4 text-sm text-on-surface-variant italic">{labels.postcardFarewell}</p>
               </div>
             </div>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      <section className="w-full px-gutter pb-section-gap md:px-margin-desktop">
-        <div className="grid grid-cols-1 gap-gutter md:grid-cols-2">
-          <RevealOnScroll className="aspect-[4/5] overflow-hidden rounded-xl is-visible">
-            <Image
-              src={house.galleryImages[0]}
-              alt={`${labels.interiorAlt} ${house.name}`}
-              width={600}
-              height={750}
-              className="h-full w-full object-cover"
-            />
-          </RevealOnScroll>
-          <RevealOnScroll className="mt-12 aspect-[4/5] overflow-hidden rounded-xl md:mt-24 is-visible">
-            <Image
-              src={house.galleryImages[1]}
-              alt={`${labels.viewsAlt} ${house.name}`}
-              width={600}
-              height={750}
-              className="h-full w-full object-cover"
-            />
           </RevealOnScroll>
         </div>
       </section>

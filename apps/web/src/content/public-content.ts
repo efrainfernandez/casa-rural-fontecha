@@ -29,16 +29,14 @@ export const ACCOMMODATIONS = [
   {
     slug: 'casa-lia',
     name: 'Casa Lía',
-    heroImage: SITE_IMAGES.casaLiaHero,
     cardImage: SITE_IMAGES.casaLiaCard,
-    galleryImages: [SITE_IMAGES.casaLiaFireplace, SITE_IMAGES.casaLiaWindow],
+    sliderImages: [SITE_IMAGES.casaLiaHero, SITE_IMAGES.casaLiaFireplace, SITE_IMAGES.casaLiaWindow],
   },
   {
     slug: 'casa-julio',
     name: 'Casa Julio',
-    heroImage: SITE_IMAGES.casaJulioCard,
     cardImage: SITE_IMAGES.casaJulioCard,
-    galleryImages: [SITE_IMAGES.casaJulioCard, SITE_IMAGES.morningLight],
+    sliderImages: [SITE_IMAGES.casaJulioCard, SITE_IMAGES.morningLight],
   },
 ] as const
 
