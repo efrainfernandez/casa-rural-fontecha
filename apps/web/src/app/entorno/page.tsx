@@ -44,47 +44,44 @@ export default async function EnvironmentPage() {
         </div>
       </section>
 
-      <section className="space-y-32">
-        {env.spots.map((spot, index) => {
-          const reverse = index === 1
-          const image = SPOT_IMAGES[index]
+      <section className="mx-auto max-w-7xl px-gutter">
+        <div className="grid items-stretch gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {env.spots.map((spot, index) => {
+            const image = SPOT_IMAGES[index]
 
-          return (
-            <div key={spot.title}>
-              <RevealOnScroll className="mx-auto grid max-w-7xl items-center gap-16 px-gutter md:grid-cols-2 is-visible">
-                <div className={reverse ? 'relative md:order-2' : 'relative'}>
-                  <div className="sketch-border overflow-hidden bg-surface-container shadow-sm">
-                    <Image
-                      src={image}
-                      alt={spot.title}
-                      width={800}
-                      height={500}
-                      className="h-[500px] w-full object-cover opacity-90 mix-blend-multiply transition-transform duration-700 hover:scale-105"
-                    />
-                  </div>
-                  {'icon' in spot && spot.icon != null ? (
-                    <div className="absolute -right-6 -bottom-6 h-32 w-32 opacity-10">
-                      <span className="material-symbols-outlined text-[120px]">{spot.icon}</span>
-                    </div>
-                  ) : null}
+            return (
+              <RevealOnScroll
+                key={spot.title}
+                className="group hand-drawn-border flex h-full flex-col overflow-hidden bg-surface-container-low is-visible"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src={image}
+                    alt={spot.title}
+                    fill
+                    className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
                 </div>
 
-                <div className={reverse ? 'md:order-1' : ''}>
-                  <span className="font-label-md mb-4 block text-label-md tracking-widest text-secondary uppercase">
+                <div className="flex flex-1 flex-col p-7">
+                  <span className="font-label-md mb-3 block text-label-md tracking-widest text-secondary uppercase">
                     {spot.eyebrow}
                   </span>
-                  <h2 className="font-headline-lg mb-6 text-headline-lg text-primary">{spot.title}</h2>
-                  <p className="font-body-lg mb-8 text-body-lg leading-relaxed text-on-surface-variant">{spot.description}</p>
+                  <h2 className="font-headline-md mb-4 text-headline-md text-primary">{spot.title}</h2>
+                  <p className="font-body-md mb-6 text-body-md leading-relaxed text-on-surface-variant">
+                    {spot.description}
+                  </p>
 
                   {'note' in spot && spot.note != null ? (
-                    <>
-                      <div className="mb-8 h-px w-16 bg-outline-variant" />
-                      <p className="font-body-md text-body-md text-on-tertiary-fixed-variant italic">{spot.note}</p>
-                    </>
+                    <p className="font-body-md mt-auto border-t border-outline-variant/50 pt-5 text-body-md text-on-tertiary-fixed-variant italic">
+                      {spot.note}
+                    </p>
                   ) : null}
 
                   {'items' in spot && spot.items != null ? (
-                    <ul className="space-y-4 font-body-md text-body-md text-on-surface-variant">
+                    <ul className="mt-auto space-y-3 border-t border-outline-variant/50 pt-5 font-body-md text-body-md text-on-surface-variant">
                       {spot.items.map((item) => {
                         return (
                           <li key={item} className="flex items-center gap-3">
@@ -97,22 +94,18 @@ export default async function EnvironmentPage() {
                   ) : null}
 
                   {'cta' in spot && spot.cta != null ? (
-                    <div className="mt-8 flex gap-4">
-                      <button
-                        type="button"
-                        className="rounded-full border border-outline px-6 py-2 font-label-md transition-all hover:bg-primary-container hover:text-on-primary-container"
-                      >
-                        {spot.cta}
-                      </button>
-                    </div>
+                    <button
+                      type="button"
+                      className="mt-auto self-start rounded-full border border-outline px-6 py-2 font-label-md transition-all hover:bg-primary-container hover:text-on-primary-container"
+                    >
+                      {spot.cta}
+                    </button>
                   ) : null}
                 </div>
               </RevealOnScroll>
-
-              <div className="wavy-divider mx-auto mt-32 max-w-4xl opacity-40" />
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </section>
 
       <section className="mx-auto mt-section-gap max-w-5xl px-gutter text-center">

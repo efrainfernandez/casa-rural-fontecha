@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { cn } from '@casa-rural-fontecha/ui/lib/utils'
-
+import HeroScrollCue from '@/components/public/hero-scroll-cue'
 import RevealOnScroll from '@/components/public/reveal-on-scroll'
 import SparkSection from '@/components/public/spark-section'
 import { ACCOMMODATIONS, SITE_IMAGES } from '@/content/public-content'
@@ -49,32 +48,32 @@ export default async function HomePage() {
           <div className="mx-auto mb-8 h-[2px] w-16 rounded-full bg-secondary-container" />
           <p className="font-body-lg text-body-lg italic opacity-90">{home.heroSubtitle}</p>
           <div className="mt-12">
-            <span className="material-symbols-outlined animate-bounce text-4xl">expand_more</span>
+            <HeroScrollCue label={home.scrollToHouses} />
           </div>
         </RevealOnScroll>
       </section>
 
-      <div className="reveal is-visible wavy-divider mx-auto my-section-gap max-w-md opacity-30" />
+      <div className="reveal is-visible wavy-divider mx-auto my-12 max-w-md opacity-30 md:my-16" />
 
-      <section className="mx-auto max-w-7xl px-gutter py-section-gap" id="houses">
-        <RevealOnScroll className="mb-16 text-center is-visible">
+      <section className="mx-auto scroll-mt-20 max-w-7xl px-gutter py-12 md:py-16" id="houses">
+        <RevealOnScroll className="mb-8 text-center is-visible">
           <h2 className="font-headline-lg mb-4 text-headline-lg">{home.housesTitle}</h2>
           <div className="mx-auto h-1 w-24 rounded-full bg-secondary opacity-20" />
         </RevealOnScroll>
 
-        <div className="grid gap-16 md:grid-cols-2 md:gap-24">
-          {ACCOMMODATIONS.map((house, index) => {
+        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
+          {ACCOMMODATIONS.map((house) => {
             const houseCopy = house.slug === 'casa-lia' ? t.houses.casaLia : t.houses.casaJulio
 
             return (
-              <RevealOnScroll key={house.slug} className={cn('group block is-visible', index === 1 && 'md:mt-24')}>
+              <RevealOnScroll key={house.slug} className="group block is-visible">
                 <Link href={`/casas/${house.slug}`} className="block">
-                  <div className="sketch-frame mb-8 aspect-[4/5] overflow-hidden transition-transform duration-500 group-hover:-translate-y-2">
+                  <div className="sketch-frame mb-5 aspect-[16/9] max-h-[280px] overflow-hidden transition-transform duration-500 group-hover:-translate-y-2">
                     <Image
                       src={house.cardImage}
                       alt={house.name}
                       width={800}
-                      height={1000}
+                      height={450}
                       className="h-full w-full object-cover grayscale-[0.3] transition-all duration-700 group-hover:grayscale-0"
                     />
                   </div>
@@ -155,39 +154,32 @@ export default async function HomePage() {
             </p>
           </RevealOnScroll>
 
-          <div className="grid items-center gap-16 md:grid-cols-2">
-            <RevealOnScroll className="hand-drawn-border bg-surface-container-low p-4 is-visible">
-              <Image
-                src={SITE_IMAGES.mountainTrail}
-                alt={home.trailsImageAlt}
-                width={700}
-                height={500}
-                className="h-auto w-full brightness-90 grayscale-[0.2]"
-              />
-            </RevealOnScroll>
-
-            <div className="space-y-12">
-              {home.trails.map((trail) => {
-                return (
-                  <RevealOnScroll key={trail.title} className="group is-visible">
-                    <h4 className="font-headline-md mb-2 text-headline-md text-primary">{trail.title}</h4>
-                    <p className="font-body-md text-body-md text-on-surface-variant">{trail.description}</p>
-                    <div className="mt-4 h-px w-12 bg-secondary opacity-30 transition-all duration-500 group-hover:w-full" />
-                  </RevealOnScroll>
-                )
-              })}
-
-              <RevealOnScroll className="is-visible">
-                <Link
-                  href="/entorno"
-                  className="inline-flex items-center gap-4 font-label-md text-label-md tracking-widest text-secondary uppercase transition-all duration-300 hover:gap-6"
+          <div className="grid gap-8 md:grid-cols-3">
+            {home.trails.map((trail, index) => {
+              return (
+                <RevealOnScroll
+                  key={trail.title}
+                  className="group hand-drawn-border flex h-full flex-col bg-surface-container-low p-8 is-visible"
+                  delay={index * 100}
                 >
-                  {home.trailsLink}
-                  <span className="h-px w-12 bg-secondary" />
-                </Link>
-              </RevealOnScroll>
-            </div>
+                  <span className="material-symbols-outlined mb-6 text-4xl text-secondary">hiking</span>
+                  <h4 className="font-headline-md mb-3 text-headline-md text-primary">{trail.title}</h4>
+                  <p className="font-body-md flex-1 text-body-md text-on-surface-variant">{trail.description}</p>
+                  <div className="mt-6 h-px w-12 bg-secondary opacity-30 transition-all duration-500 group-hover:w-full" />
+                </RevealOnScroll>
+              )
+            })}
           </div>
+
+          <RevealOnScroll className="mt-10 text-center is-visible">
+            <Link
+              href="/entorno"
+              className="inline-flex items-center gap-4 font-label-md text-label-md tracking-widest text-secondary uppercase transition-all duration-300 hover:gap-6"
+            >
+              {home.trailsLink}
+              <span className="h-px w-12 bg-secondary" />
+            </Link>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -210,7 +202,9 @@ export default async function HomePage() {
                   <p className="font-body-lg mb-8 flex-grow text-body-lg text-on-surface-variant italic">
                     &ldquo;{review.quote}&rdquo;
                   </p>
-                  <span className="font-label-md text-label-md tracking-widest uppercase opacity-60">{review.author}</span>
+                  <span className="font-label-md text-label-md tracking-widest uppercase opacity-60">
+                    {review.author}
+                  </span>
                 </RevealOnScroll>
               )
             })}
