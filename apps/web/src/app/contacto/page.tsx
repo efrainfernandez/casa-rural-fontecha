@@ -97,7 +97,12 @@ export default async function ContactPage() {
             </div>
           </div>
 
-          <ContactMap ariaLabel={contact.mapTitle} popupLabel={contact.mapPopup} />
+          <ContactMap
+            ariaLabel={contact.mapTitle}
+            latitude={CONTACT_DETAILS.coordinates.latitude}
+            longitude={CONTACT_DETAILS.coordinates.longitude}
+            popupLabel={contact.mapPopup}
+          />
         </div>
       </section>
     </main>
