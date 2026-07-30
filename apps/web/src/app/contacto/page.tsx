@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Mail, Phone } from 'lucide-react'
 
 import ContactMap from '@/components/public/contact-map'
 import { CONTACT_DETAILS } from '@/content/public-content'
@@ -11,7 +12,6 @@ export const metadata: Metadata = {
 
 const DESTINATION = `${CONTACT_DETAILS.coordinates.latitude},${CONTACT_DETAILS.coordinates.longitude}`
 const GOOGLE_MAPS_URL = `https://www.google.com/maps/dir/?api=1&destination=${DESTINATION}`
-const APPLE_MAPS_URL = `https://maps.apple.com/?daddr=${DESTINATION}&dirflg=d`
 
 export default async function ContactPage() {
   const locale = await getLocale()
@@ -19,13 +19,13 @@ export default async function ContactPage() {
 
   const contactItems = [
     {
-      icon: 'call',
+      icon: Phone,
       label: contact.phone,
       value: CONTACT_DETAILS.phone,
       href: `tel:${CONTACT_DETAILS.phoneHref}`,
     },
     {
-      icon: 'mail',
+      icon: Mail,
       label: contact.email,
       value: CONTACT_DETAILS.email,
       href: `mailto:${CONTACT_DETAILS.email}`,
@@ -45,20 +45,22 @@ export default async function ContactPage() {
 
         <div className="mb-24 grid gap-6 md:grid-cols-2">
           {contactItems.map((item) => {
+            const Icon = item.icon
+
             return (
               <a
                 key={item.label}
                 href={item.href}
-                className="group flex items-center gap-5 rounded-2xl border border-outline-variant bg-surface-container-low p-6 transition-all hover:-translate-y-1 hover:border-secondary hover:shadow-md"
+                className="group flex min-w-0 items-center gap-5 rounded-2xl border border-outline-variant bg-surface-container-low p-6 transition-all hover:-translate-y-1 hover:border-secondary hover:shadow-md"
               >
-                <span className="material-symbols-outlined flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-container text-primary">
-                  {item.icon}
+                <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary text-on-primary shadow-sm">
+                  <Icon size={26} strokeWidth={1.8} aria-hidden="true" />
                 </span>
-                <span>
+                <span className="min-w-0">
                   <span className="font-label-md mb-1 block text-label-md tracking-wider text-on-surface-variant uppercase">
                     {item.label}
                   </span>
-                  <span className="font-headline-md text-headline-md text-primary transition-colors group-hover:text-secondary">
+                  <span className="font-headline-md block break-words text-headline-md text-primary transition-colors group-hover:text-secondary">
                     {item.value}
                   </span>
                 </span>
@@ -91,15 +93,6 @@ export default async function ContactPage() {
               >
                 <span className="material-symbols-outlined text-lg">map</span>
                 {contact.googleMaps}
-              </a>
-              <a
-                href={APPLE_MAPS_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-primary px-5 py-3 font-label-md text-primary transition-all hover:scale-105 hover:bg-primary-container active:scale-95"
-              >
-                <span className="material-symbols-outlined text-lg">directions</span>
-                {contact.appleMaps}
               </a>
             </div>
           </div>

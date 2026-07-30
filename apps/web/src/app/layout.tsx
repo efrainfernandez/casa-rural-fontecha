@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Libre_Caslon_Text, Source_Sans_3 } from 'next/font/google'
-import 'maplibre-gl/dist/maplibre-gl.css'
 
 import '../index.css'
 import GrainOverlay from '@/components/public/grain-overlay'

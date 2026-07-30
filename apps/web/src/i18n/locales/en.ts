@@ -13,9 +13,9 @@ export const en = {
   },
   booking: 'Book on Booking.com',
   home: {
-    heroEyebrow: 'Palencia Mountains',
+    heroEyebrow: 'Casa Rural Fontecha',
     heroTitle: 'Your home in the Palencia Mountains.',
-    heroSubtitle: 'Feel the warmth of the fireplace.',
+    heroSubtitle: 'The disconnection you need.',
     heroImageAlt: 'Palencia mountains at dusk',
     scrollToHouses: 'Go to our houses',
     housesTitle: 'Our Houses',
@@ -83,7 +83,7 @@ export const en = {
     previousImage: 'View previous image',
     nextImage: 'View next image',
     casaLia: {
-      tagline: 'For two restless souls.',
+      tagline: 'For restless souls.',
       heroTagline: 'A refuge among holm oaks and stone.',
       summary:
         'Carefully restored to preserve its rustic soul, Casa Lía blends traditional Castilian masonry with modern, airy interiors.',

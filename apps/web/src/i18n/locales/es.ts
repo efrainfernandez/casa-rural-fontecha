@@ -13,9 +13,9 @@ export const es = {
   },
   booking: 'Reservar en Booking.com',
   home: {
-    heroEyebrow: 'Montaña Palentina',
+    heroEyebrow: 'Casa Rural Fontecha',
     heroTitle: 'Tu hogar en la Montaña Palentina.',
-    heroSubtitle: 'Siente el calor de la chimenea.',
+    heroSubtitle: 'La desconexión que necesitas.',
     heroImageAlt: 'Montaña Palentina al atardecer',
     scrollToHouses: 'Ir a nuestras casas',
     housesTitle: 'Nuestras Casas',
@@ -84,7 +84,7 @@ export const es = {
     previousImage: 'Ver imagen anterior',
     nextImage: 'Ver imagen siguiente',
     casaLia: {
-      tagline: 'Para dos almas inquietas.',
+      tagline: 'Para almas inquietas.',
       heroTagline: 'Un refugio entre encinas y piedra.',
       summary:
         'Restaurada con cuidado para preservar su alma rústica, Casa Lía combina la mampostería castellana tradicional con interiores modernos y luminosos.',
