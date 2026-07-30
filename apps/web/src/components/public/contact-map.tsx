@@ -55,7 +55,7 @@ export default function ContactMap({
         container: containerRef.current,
         style: MAP_STYLE,
         center: [longitude, latitude],
-        zoom: 16.5,
+        zoom: 17.5,
         pitch: 55,
         bearing: -18,
         attributionControl: { compact: true },

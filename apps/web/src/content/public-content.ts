@@ -36,7 +36,7 @@ export const CONTACT_DETAILS = {
   address: 'Calle del Caño, 4, 34110 Pino del Río, Palencia, España',
   location: 'Pino del Río, Palencia',
   coordinates: {
-    latitude: 42.644198,
-    longitude: -4.807965,
+    latitude: 42.64386,
+    longitude: -4.808431,
   },
 } as const
